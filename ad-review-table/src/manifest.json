@@ -1,0 +1,24 @@
+{
+  "name": "My Visualizations",
+  "organization": "Anvil Insights",
+  "description": "My first visualization package.",
+  "logoUrl": "https://logo",
+  "organizationUrl": "http://anvilinsights.com",
+  "supportUrl": "https://url",
+  "privacyPolicyUrl": "https://url",
+  "termsOfServiceUrl": "https://url",
+  "packageUrl": "https://url",
+  "devMode": "true",
+  "components": [
+    {
+      "name": "adReviewTable",
+      "description": "",
+      "iconUrl": "https://url",
+      "resource": {
+        "js": "gs://anvil-data-studio/index.js",
+        "config": "gs://anvil-data-studio/index.json",
+        "css": "gs://anvil-data-studio/index.css"
+      }
+    }
+  ]
+}
