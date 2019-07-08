@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import Campaign from './Campaign'
 
 const Campaigns = props => {
@@ -18,12 +20,16 @@ const Campaigns = props => {
         <tr role="row">
           <th role="columnheader">Name</th>
           <th role="columnheader">Clicks</th>
-          <th role="columnheader">Impressions</th>
+          <th role="columnheader">Not Clicked</th>
         </tr>
       </thead>
       <tbody role="rowgroup">{campList}</tbody>
     </table>
   )
+}
+
+Campaigns.propTypes = {
+  campaigns: PropTypes.array,
 }
 
 export default Campaigns

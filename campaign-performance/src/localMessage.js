@@ -13,11 +13,11 @@ export const message = {
       },
       {
         dimID: ['Camp 2'],
-        metricID: [2323, 234],
+        metricID: [2323, 789798],
       },
       {
         dimID: ['Camp 3'],
-        metricID: [343, 3565],
+        metricID: [343, 35657],
       },
     ],
   },
@@ -45,5 +45,10 @@ export const message = {
       },
     ],
   },
-  style: {},
+  style: {
+    title: {
+      value: 'Campaign Performance',
+      defaultValue: 'Backup Title',
+    },
+  },
 }
