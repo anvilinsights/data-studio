@@ -1,0 +1,24 @@
+{
+  "name": "Campaign Performance",
+  "organization": "Anvil Insights",
+  "description": "",
+  "logoUrl": "",
+  "organizationUrl": "https://anvilinsights.com",
+  "supportUrl": "https://url",
+  "privacyPolicyUrl": "",
+  "termsOfServiceUrl": "",
+  "packageUrl": "",
+  "devMode": true,
+  "components": [
+    {
+      "name": "campaignPerformance",
+      "description": "",
+      "iconUrl": "",
+      "resource": {
+        "js": "gs://anvil-data-studio-campaign-performance/index.js",
+        "config": "gs://anvil-data-studio-campaign-performance/index.json",
+        "css": "gs://anvil-data-studio-campaign-performance/index.css"
+      }
+    }
+  ]
+}
