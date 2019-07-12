@@ -4,6 +4,7 @@ import * as dscc from '@google/dscc'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import MainComponent from './components/MainComponent'
+import Dataframe from 'dataframe-js'
 
 const LOCAL = process.env.NODE_ENV !== 'production'
 // const LOCAL = false
@@ -17,6 +18,8 @@ const setup = () => {
 }
 
 // type State = Partial<dscc.ObjectFormat>;
+
+const DataContext = React.createContext()
 
 class AppComponent extends React.Component {
   // public static state: State = {};
@@ -38,8 +41,21 @@ class AppComponent extends React.Component {
   }
 
   handleDataUpdate(data) {
-    console.log('handleDataUpdate', JSON.stringify(data))
-    this.setState(data)
+    // console.log('handleDataUpdate', JSON.stringify(data))
+    // console.log('DEFAULT', data.tables.DEFAULT)
+
+    // Map click/notClick values into dataFrame
+    const clickData = data.tables.DEFAULT
+    const rows = clickData.map(x => ({
+      clicks: x.metricID[0],
+      impressions: x.metricID[1],
+    }))
+
+    console.log('rows', rows)
+    const dataFrame = new Dataframe(rows, ['clicks', 'impressions'])
+
+    console.log('dataFrame', dataFrame)
+    this.setState({ ...data, dataFrame })
   }
 
   render() {
