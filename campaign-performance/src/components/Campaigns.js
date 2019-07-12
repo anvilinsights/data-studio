@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import Campaign from './Campaign'
 
 const Campaigns = props => {
-  // return <div>test</div>
   const campList = props.campaigns.map(x => (
     <Campaign
       clicks={x.metricID[0]}
       impressions={x.metricID[1]}
       name={x.dimID[0]}
+      dataFrame={props.dataFrame}
       key={x.dimID[0]}
     />
   ))
@@ -21,6 +21,7 @@ const Campaigns = props => {
           <th role="columnheader">Name</th>
           <th role="columnheader">Clicks</th>
           <th role="columnheader">Not Clicked</th>
+          <th role="columnheader">Expected Clicks</th>
         </tr>
       </thead>
       <tbody role="rowgroup">{campList}</tbody>
