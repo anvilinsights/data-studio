@@ -2,8 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import * as stats from '../utils/stats'
+import { DataContext } from '../utils/DataContext'
 
-const Campaign = ({ name, clicks, impressions, dataFrame }) => {
+const Campaign = ({ name, clicks, impressions }) => {
+  // Dataframe from context
+  const { value: dataFrame } = React.useContext(DataContext)
+
+  // Calculate not clicked from impressions
   const noAction = stats.notClicked(clicks, impressions)
 
   const colTotal = dataFrame.stat.sum('clicks')
