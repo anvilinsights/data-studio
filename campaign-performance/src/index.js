@@ -5,6 +5,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import MainComponent from './components/MainComponent'
 import Dataframe from 'dataframe-js'
+import { DataProvider } from './utils/DataContext'
 
 const LOCAL = process.env.NODE_ENV !== 'production'
 // const LOCAL = false
@@ -19,14 +20,16 @@ const setup = () => {
 
 // type State = Partial<dscc.ObjectFormat>;
 
-const DataContext = React.createContext()
-
 class AppComponent extends React.Component {
   // public static state: State = {};
 
   constructor(props) {
     super(props)
     this.handleDataUpdate.bind(this)
+
+    this.state = {
+      dataFrame: {},
+    }
   }
 
   componentDidMount() {
@@ -51,10 +54,7 @@ class AppComponent extends React.Component {
       impressions: x.metricID[1],
     }))
 
-    console.log('rows', rows)
     const dataFrame = new Dataframe(rows, ['clicks', 'impressions'])
-
-    console.log('dataFrame', dataFrame)
     this.setState({ ...data, dataFrame })
   }
 
@@ -69,7 +69,9 @@ class AppComponent extends React.Component {
     return (
       <React.Fragment>
         <Global styles={styles} />
-        <MainComponent {...this.state} />
+        <DataProvider value={this.state.dataFrame}>
+          <MainComponent {...this.state} />
+        </DataProvider>
       </React.Fragment>
     )
   }

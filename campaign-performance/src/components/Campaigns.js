@@ -9,7 +9,6 @@ const Campaigns = props => {
       clicks={x.metricID[0]}
       impressions={x.metricID[1]}
       name={x.dimID[0]}
-      dataFrame={props.dataFrame}
       key={x.dimID[0]}
     />
   ))

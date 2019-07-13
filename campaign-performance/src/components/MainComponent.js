@@ -8,7 +8,6 @@ const MainComponent = props => {
   }
 
   const { dataFrame } = props
-  console.log('clicked sum', dataFrame.stat.sum('clicks'))
 
   return (
     <React.Fragment>

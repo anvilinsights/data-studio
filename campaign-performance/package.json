@@ -14,7 +14,8 @@
     "push:prod": "dscc-scripts viz push -d prod",
     "update_message": "dscc-scripts viz update_message -f object",
     "start": "dscc-scripts viz start",
-    "deploy:dev": "yarn build:dev && yarn push:dev"
+    "deploy:dev": "yarn build:dev && yarn push:dev",
+    "test": "jest --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
