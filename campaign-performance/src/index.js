@@ -6,6 +6,7 @@ import * as ReactDOM from 'react-dom'
 import MainComponent from './components/MainComponent'
 import Dataframe from 'dataframe-js'
 import { DataProvider } from './utils/DataContext'
+import { notClicked } from './utils/stats'
 
 const LOCAL = process.env.NODE_ENV !== 'production'
 // const LOCAL = false
@@ -52,9 +53,17 @@ class AppComponent extends React.Component {
     const rows = clickData.map(x => ({
       clicks: x.metricID[0],
       impressions: x.metricID[1],
+      notClicked: notClicked(x.metricID[0], x.metricID[1]),
+      name: x.dimID[0],
     }))
 
-    const dataFrame = new Dataframe(rows, ['clicks', 'impressions'])
+    const dataFrame = new Dataframe(rows, [
+      'clicks',
+      'impressions',
+      'notClicked',
+      'name',
+    ])
+
     this.setState({ ...data, dataFrame })
   }
 
