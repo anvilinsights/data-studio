@@ -7,15 +7,13 @@ const MainComponent = props => {
     return <div>loading...</div>
   }
 
-  const { dataFrame } = props
-
   return (
     <React.Fragment>
       <Title
         text={props.style.title.value}
         defaultValue={props.style.title.defaultValue}
       />
-      <Campaigns campaigns={props.tables.DEFAULT} dataFrame={dataFrame} />
+      <Campaigns />
     </React.Fragment>
   )
 }

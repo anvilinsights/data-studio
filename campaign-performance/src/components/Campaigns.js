@@ -2,16 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Campaign from './Campaign'
+import { DataContext } from '../utils/DataContext'
 
 const Campaigns = props => {
-  const campList = props.campaigns.map(x => (
-    <Campaign
-      clicks={x.metricID[0]}
-      impressions={x.metricID[1]}
-      name={x.dimID[0]}
-      key={x.dimID[0]}
-    />
-  ))
+  const { value: dataFrame } = React.useContext(DataContext)
+
+  // Convert from dataframe to key/val pairs
+  const campList = dataFrame
+    .toCollection()
+    .map(x => (
+      <Campaign
+        clicks={x.clicks}
+        notClicked={x.notClicked}
+        impressions={x.impressions}
+        name={x.name}
+        key={x.name}
+      />
+    ))
 
   return (
     <table role="table">
