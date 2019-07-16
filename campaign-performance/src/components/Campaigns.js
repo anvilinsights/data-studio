@@ -6,6 +6,7 @@ import { DataContext } from '../utils/DataContext'
 
 const Campaigns = props => {
   const { value: dataFrame } = React.useContext(DataContext)
+  console.log('dataFrame', dataFrame)
 
   // Convert from dataframe to key/val pairs
   const campList = dataFrame
@@ -15,6 +16,7 @@ const Campaigns = props => {
         clicks={x.clicks}
         notClicked={x.notClicked}
         impressions={x.impressions}
+        expected={x.expected}
         name={x.name}
         key={x.name}
       />
@@ -27,7 +29,7 @@ const Campaigns = props => {
           <th role="columnheader">Name</th>
           <th role="columnheader">Clicks</th>
           <th role="columnheader">Not Clicked</th>
-          <th role="columnheader">Expected Clicks</th>
+          <th role="columnheader">Expected</th>
         </tr>
       </thead>
       <tbody role="rowgroup">{campList}</tbody>

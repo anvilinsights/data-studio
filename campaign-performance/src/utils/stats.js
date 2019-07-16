@@ -2,7 +2,7 @@ const chiSquaredTest = require('chi-squared-test')
 
 module.exports = {
   expected: function(rowTotal, columnTotal, grandTotal) {
-    return ((rowTotal * columnTotal) / grandTotal).toFixed(1)
+    return parseFloat(((rowTotal * columnTotal) / grandTotal).toFixed(1))
   },
 
   notClicked: function(clicked, impressions) {
@@ -13,7 +13,7 @@ module.exports = {
     return clicked + notClicked
   },
 
-  pValue: function(observed, expected, reduction) {
+  pValue: function(observed, expected, reduction = 1) {
     const { probability } = chiSquaredTest(observed, expected, reduction)
     return probability
   },
