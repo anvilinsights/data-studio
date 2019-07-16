@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom'
 import MainComponent from './components/MainComponent'
 import Dataframe from 'dataframe-js'
 import { DataProvider } from './utils/DataContext'
-import { notClicked } from './utils/stats'
+import * as stats from './utils/stats'
 
 const LOCAL = process.env.NODE_ENV !== 'production'
 // const LOCAL = false
@@ -53,18 +53,31 @@ class AppComponent extends React.Component {
     const rows = clickData.map(x => ({
       clicks: x.metricID[0],
       impressions: x.metricID[1],
-      notClicked: notClicked(x.metricID[0], x.metricID[1]),
+      notClicked: stats.notClicked(x.metricID[0], x.metricID[1]),
       name: x.dimID[0],
     }))
 
-    const dataFrame = new Dataframe(rows, [
+    const frame = new Dataframe(rows, [
       'clicks',
       'impressions',
       'notClicked',
       'name',
+      'expected',
     ])
 
-    this.setState({ ...data, dataFrame })
+    const dataFrame = frame.map(row => {
+      const colTotal = frame.stat.sum('clicks')
+      const rowTotal = row.get('impressions')
+      const grandTotal = frame.stat.sum('impressions')
+
+      const expected = stats.expected(rowTotal, colTotal, grandTotal)
+      return row.set('expected', expected)
+    })
+
+    const pStats = dataFrame.select('clicks', 'expected').toDict()
+    const pValue = stats.pValue(pStats.clicks, pStats.expected)
+
+    this.setState({ ...data, dataFrame, pValue })
   }
 
   render() {

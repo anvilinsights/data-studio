@@ -9,15 +9,15 @@ export const message = {
     DEFAULT: [
       {
         dimID: ['Campaign 1'],
-        metricID: [3234, 234234],
+        metricID: [70, 5290],
       },
       {
         dimID: ['Camp 2'],
-        metricID: [2323, 789798],
+        metricID: [10, 428],
       },
       {
         dimID: ['Camp 3'],
-        metricID: [343, 35657],
+        metricID: [10, 600],
       },
     ],
   },
