@@ -6,7 +6,6 @@ import { DataContext } from '../utils/DataContext'
 
 const Campaigns = props => {
   const { value: dataFrame } = React.useContext(DataContext)
-  console.log('dataFrame', dataFrame)
 
   // Convert from dataframe to key/val pairs
   const campList = dataFrame
