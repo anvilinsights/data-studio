@@ -1,6 +1,9 @@
 import React from 'react'
 import Campaigns from './Campaigns'
 import Title from './Title'
+import PValue from './PValue'
+
+import { DataContext } from '../utils/DataContext'
 
 const MainComponent = props => {
   if (!props.fields || !props.tables || !props.tables.DEFAULT) {
@@ -14,6 +17,7 @@ const MainComponent = props => {
         defaultValue={props.style.title.defaultValue}
       />
       <Campaigns />
+      <PValue p={props.pValue} />
     </React.Fragment>
   )
 }
