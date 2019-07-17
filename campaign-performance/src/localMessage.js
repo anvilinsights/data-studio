@@ -13,7 +13,7 @@ export const message = {
       },
       {
         dimID: ['Camp 2'],
-        metricID: [12, 428],
+        metricID: [12, 528],
       },
       {
         dimID: ['Camp 3'],
