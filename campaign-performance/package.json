@@ -29,6 +29,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "chi-squared-test": "^1.1.0",
+    "color": "^3.1.2",
     "dataframe-js": "^1.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

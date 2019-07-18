@@ -17,4 +17,8 @@ module.exports = {
     const { probability } = chiSquaredTest(observed, expected, reduction)
     return probability
   },
+
+  expectedPercentage: function(expected, actual) {
+    return (actual / expected) * 100
+  },
 }
