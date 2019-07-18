@@ -29,6 +29,7 @@ const Campaigns = props => {
           <th role="columnheader">Clicks</th>
           <th role="columnheader">Not Clicked</th>
           <th role="columnheader">Expected</th>
+          <th role="columnheader">Pct</th>
         </tr>
       </thead>
       <tbody role="rowgroup">{campList}</tbody>
