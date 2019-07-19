@@ -25,11 +25,13 @@ const Campaigns = props => {
     <table role="table">
       <thead role="rowgroup">
         <tr role="row">
-          <th role="columnheader">Name</th>
+          <th role="columnheader" align="left">
+            Name
+          </th>
           <th role="columnheader">Clicks</th>
-          <th role="columnheader">Not Clicked</th>
           <th role="columnheader">Expected</th>
-          <th role="columnheader">Pct</th>
+          <th role="columnheader">Not Clicked</th>
+          <th role="columnheader">Act vs. Exp</th>
         </tr>
       </thead>
       <tbody role="rowgroup">{campList}</tbody>
