@@ -19,6 +19,6 @@ module.exports = {
   },
 
   expectedPercentage: function(expected, actual) {
-    return (actual / expected) * 100
+    return actual / expected
   },
 }
