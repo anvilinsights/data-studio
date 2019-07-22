@@ -11,7 +11,7 @@ const PValue = ({ p, threshold }) => {
         p ({threshold}): {pVal}
       </h2>
 
-      <h4>{isSignificant ? 'True' : 'False'}</h4>
+      <h4>{isSignificant ? 'Admirable' : 'Impish'}</h4>
     </div>
   )
 }

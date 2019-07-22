@@ -3,20 +3,25 @@ import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Color from 'color'
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
 
-import { expectedPercentage } from '../utils/stats'
-
-const Campaign = ({ name, clicks, notClicked, expected }) => {
-  const exPct = expectedPercentage(expected, clicks)
-
+const Campaign = ({
+  name,
+  clicks,
+  impressions,
+  expected,
+  expectedPercentage,
+  opacity,
+}) => {
   const baseColor = '#4da3eb'
   const basePadding = '10px'
-  const multiplier = 0.15
+  const multiplier = 0.27
 
   const adjustedColor =
-    exPct > 1
-      ? Color(baseColor).lighten(exPct * multiplier)
-      : Color(baseColor).darken(exPct * multiplier)
+    expectedPercentage > 1
+      ? Color(baseColor).lighten(expectedPercentage * multiplier)
+      : Color(baseColor).darken(expectedPercentage * multiplier)
 
   const expectedStyle = css`
     background: #999;
@@ -30,26 +35,27 @@ const Campaign = ({ name, clicks, notClicked, expected }) => {
 
   const cellStyle = css`
     padding: ${basePadding};
+    // opacity: ${opacity};
   `
 
   return (
-    <tr role="row" css={rowStyle}>
-      <td role="cell" css={cellStyle}>
+    <TableRow role="row" css={rowStyle}>
+      <TableCell role="cell" css={cellStyle}>
         {name}
-      </td>
-      <td role="cell" css={cellStyle} align="right">
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
         {clicks.toLocaleString()}
-      </td>
-      <td role="cell" css={cellStyle} align="right">
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
         {expected.toLocaleString()}
-      </td>
-      <td role="cell" css={cellStyle} align="right">
-        {notClicked.toLocaleString()}
-      </td>
-      <td role="cell" css={expectedStyle} align="right">
-        {exPct.toFixed(3)}
-      </td>
-    </tr>
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
+        {impressions.toLocaleString()}
+      </TableCell>
+      <TableCell role="cell" css={expectedStyle} align="right">
+        {expectedPercentage.toFixed(3)}
+      </TableCell>
+    </TableRow>
   )
 }
 
@@ -59,6 +65,8 @@ Campaign.propTypes = {
   impressions: PropTypes.number,
   notClicked: PropTypes.number,
   expected: PropTypes.number,
+  expectedPercentage: PropTypes.number,
+  opacity: PropTypes.number,
 }
 
 export default Campaign

@@ -12,6 +12,10 @@ export const message = {
         metricID: [70, 5290],
       },
       {
+        dimID: ['Camp 4'],
+        metricID: [45, 2891],
+      },
+      {
         dimID: ['Camp 2'],
         metricID: [12, 528],
       },
