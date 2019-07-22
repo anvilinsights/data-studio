@@ -63,6 +63,7 @@ class AppComponent extends React.Component {
       'notClicked',
       'name',
       'expected',
+      'expectedPercentage',
     ])
 
     const dataFrame = frame.map(row => {
@@ -71,7 +72,8 @@ class AppComponent extends React.Component {
       const grandTotal = frame.stat.sum('impressions')
 
       const expected = stats.expected(rowTotal, colTotal, grandTotal)
-      return row.set('expected', expected)
+      const exPct = stats.expectedPercentage(expected, row.get('clicks'))
+      return row.set('expected', expected).set('expectedPercentage', exPct)
     })
 
     const pStats = dataFrame.select('clicks', 'expected').toDict()
