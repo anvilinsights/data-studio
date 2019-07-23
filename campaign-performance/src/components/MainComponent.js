@@ -16,8 +16,8 @@ const MainComponent = props => {
         text={props.style.title.value}
         defaultValue={props.style.title.defaultValue}
       />
-      <Campaigns />
       <PValue p={props.pValue} />
+      <Campaigns />
     </React.Fragment>
   )
 }
