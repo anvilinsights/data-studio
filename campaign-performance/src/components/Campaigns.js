@@ -47,13 +47,13 @@ const Campaigns = props => {
             Name
           </TableCell>
           <TableCell role="columnheader" align="right">
+            Impressions
+          </TableCell>
+          <TableCell role="columnheader" align="right">
             Clicks
           </TableCell>
           <TableCell role="columnheader" align="right">
             Expected
-          </TableCell>
-          <TableCell role="columnheader" align="right">
-            Impressions
           </TableCell>
           <TableCell role="columnheader" align="right">
             Act vs. Exp

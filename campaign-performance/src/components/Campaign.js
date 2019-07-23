@@ -14,46 +14,54 @@ const Campaign = ({
   expectedPercentage,
   opacity,
 }) => {
-  const baseColor = '#4da3eb'
+  const baseColor = '#0279C7'
   const basePadding = '10px'
-  const multiplier = 0.27
+  // const multiplier = 0.5
+
+  /*
+  blue: #4da3eb
+  dark blue: #0279C7
+  */
 
   const adjustedColor =
-    expectedPercentage > 1
-      ? Color(baseColor).lighten(expectedPercentage * multiplier)
-      : Color(baseColor).darken(expectedPercentage * multiplier)
+    expectedPercentage > 0
+      ? Color(baseColor)
+          .darken(expectedPercentage)
+          .desaturate(0.1)
+      : Color(baseColor)
+          .darken(expectedPercentage)
+          .rotate(180)
+          .desaturate(0.1)
 
   const expectedStyle = css`
     background: #999;
-    padding: ${basePadding};
-  `
-
-  const rowStyle = css`
-    background: ${adjustedColor.hsl().string()};
-    color: ${adjustedColor.isLight() ? '#000' : '#333'};
   `
 
   const cellStyle = css`
-    padding: ${basePadding};
     // opacity: ${opacity};
   `
 
+  const colorStyle = css`
+    background: ${adjustedColor.hsl().string()};
+    color: ${adjustedColor.isLight() ? '#000' : '#dfdfdf'} !important;
+  `
+
   return (
-    <TableRow role="row" css={rowStyle}>
+    <TableRow role="row">
       <TableCell role="cell" css={cellStyle}>
         {name}
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
-        {clicks.toLocaleString()}
-      </TableCell>
-      <TableCell role="cell" css={cellStyle} align="right">
-        {expected.toLocaleString()}
-      </TableCell>
-      <TableCell role="cell" css={cellStyle} align="right">
         {impressions.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={expectedStyle} align="right">
-        {expectedPercentage.toFixed(3)}
+      <TableCell role="cell" css={cellStyle} align="right">
+        {clicks.toLocaleString()}
+      </TableCell>
+      <TableCell role="cell" css={colorStyle} align="right">
+        {expected.toLocaleString()}
+      </TableCell>
+      <TableCell role="cell" css={colorStyle} align="right">
+        {expectedPercentage.toFixed(2)}
       </TableCell>
     </TableRow>
   )
