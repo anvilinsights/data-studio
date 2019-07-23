@@ -14,24 +14,18 @@ const Campaign = ({
   expectedPercentage,
   opacity,
 }) => {
-  const baseColor = '#0279C7'
-  const basePadding = '10px'
+  const positiveColor = '#246EB9'
+  const negativeColor = '#F06543'
   // const multiplier = 0.5
 
   /*
-  blue: #4da3eb
   dark blue: #0279C7
   */
 
   const adjustedColor =
     expectedPercentage > 0
-      ? Color(baseColor)
-          .darken(expectedPercentage)
-          .desaturate(0.1)
-      : Color(baseColor)
-          .darken(expectedPercentage)
-          .rotate(180)
-          .desaturate(0.1)
+      ? Color(positiveColor).darken(expectedPercentage)
+      : Color(negativeColor).darken(expectedPercentage)
 
   const expectedStyle = css`
     background: #999;

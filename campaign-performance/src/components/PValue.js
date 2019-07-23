@@ -7,11 +7,10 @@ const PValue = ({ p, threshold }) => {
 
   return (
     <div className="p-value-wrapper">
-      <h2>
+      <h3>{isSignificant ? 'Significant' : 'Not Significant'}</h3>
+      <h4>
         p ({threshold}): {pVal}
-      </h2>
-
-      <h4>{isSignificant ? 'Admirable' : 'Impish'}</h4>
+      </h4>
     </div>
   )
 }
