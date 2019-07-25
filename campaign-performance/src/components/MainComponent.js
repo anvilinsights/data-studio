@@ -16,7 +16,10 @@ const MainComponent = props => {
         text={props.style.title.value}
         defaultValue={props.style.title.defaultValue}
       />
-      <PValue p={props.pValue} />
+      <PValue
+        p={props.pValue}
+        thresholdObj={props.style.significanceThreshold}
+      />
       <Campaigns />
     </React.Fragment>
   )

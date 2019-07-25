@@ -35,6 +35,12 @@
           "label": "Title",
           "type": "TEXTINPUT",
           "defaultValue": "Campaign Performance"
+        },
+        {
+          "id": "significanceThreshold",
+          "label": "Significance Threshold",
+          "type": "TEXTINPUT",
+          "defaultValue": "0.05"
         }
       ]
     }

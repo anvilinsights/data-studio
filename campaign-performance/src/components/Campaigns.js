@@ -17,7 +17,7 @@ const Campaigns = props => {
   const { value: dataFrame } = React.useContext(DataContext)
 
   const tableStyle = css`
-    width: 650px !important;
+    width: 1100px !important;
   `
 
   const exPct = dataFrame.select('expectedPercentage').toDict()
