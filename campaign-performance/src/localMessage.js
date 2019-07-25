@@ -54,5 +54,9 @@ export const message = {
       value: 'Campaign Performance',
       defaultValue: 'Backup Title',
     },
+    significanceThreshold: {
+      value: '0.05',
+      defaultValue: '0.05',
+    },
   },
 }
