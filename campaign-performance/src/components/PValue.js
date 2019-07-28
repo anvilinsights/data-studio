@@ -7,7 +7,7 @@ const PValue = ({ p, thresholdObj }) => {
   const { value, defaultValue } = thresholdObj
   const threshold = parseFloat(value || defaultValue)
 
-  const isSignificant = pVal > threshold
+  const isSignificant = pVal < threshold
 
   return (
     <div className="p-value-wrapper">

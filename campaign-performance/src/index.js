@@ -66,6 +66,9 @@ class AppComponent extends React.Component {
       'expectedPercentage',
     ])
 
+    console.log('grandTotal', frame.stat.sum('impressions'))
+    console.log('click column total', frame.stat.sum('clicks'))
+
     const dataFrame = frame
       .map(row => {
         const colTotal = frame.stat.sum('clicks')
@@ -79,7 +82,7 @@ class AppComponent extends React.Component {
       .sortBy('expectedPercentage', true)
 
     const pStats = dataFrame.select('clicks', 'expected').toDict()
-    const pValue = stats.pValue(pStats.clicks, pStats.expected)
+    const pValue = stats.pValue(pStats.clicks, pStats.expected, 1)
 
     this.setState({ ...data, dataFrame, pValue })
   }
