@@ -13,8 +13,11 @@ import normalize from 'array-normalize'
 import Campaign from './Campaign'
 import { DataContext } from '../utils/DataContext'
 
-const Campaigns = props => {
+const Campaigns = ({ pastTenseLabel, fontColor }) => {
+  console.log('fontColor', fontColor)
   const { value: dataFrame } = React.useContext(DataContext)
+  const pastTense = pastTenseLabel.value || pastTenseLabel.defaultValue
+  const color = fontColor.value.color || fontColor.defaultValue
 
   const tableStyle = css`
     width: 1100px !important;
@@ -35,28 +38,55 @@ const Campaigns = props => {
         expectedPercentage={x.expectedPercentage}
         opacity={normalizedExpected[i]}
         name={x.name}
+        fontColor={color}
         key={x.name}
       />
     ))
+
+  const headerStyle = css`
+    color: ${color} !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+  `
+
+  const subHeadStyle = css`
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: block;
+    font-weight: normal;
+  `
+
+  const noSubHead = css`
+    padding-bottom: 0px !important;
+  `
 
   return (
     <Table role="table" css={tableStyle}>
       <TableHead role="rowgroup">
         <TableRow role="row">
-          <TableCell role="columnheader" align="left">
+          <TableCell
+            role="columnheader"
+            align="left"
+            css={[headerStyle, noSubHead]}
+          >
             Name
           </TableCell>
-          <TableCell role="columnheader" align="right">
+          <TableCell
+            role="columnheader"
+            align="left"
+            css={[headerStyle, noSubHead]}
+          >
             Impressions
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Clicks
+          <TableCell role="columnheader" align="left" css={headerStyle}>
+            <span css={subHeadStyle}>Actual</span> {pastTense}
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Expected
+          <TableCell role="columnheader" align="left" css={headerStyle}>
+            <span css={subHeadStyle}>Expected</span> {pastTense}
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Act vs. Exp
+          <TableCell role="columnheader" align="left" css={headerStyle}>
+            <span css={subHeadStyle}>Performance</span> Conversions
           </TableCell>
         </TableRow>
       </TableHead>

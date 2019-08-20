@@ -1,27 +1,43 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import Campaigns from './Campaigns'
 import Title from './Title'
-import PValue from './PValue'
-
-import { DataContext } from '../utils/DataContext'
+import SignificanceAlert from './SignificanceAlert'
 
 const MainComponent = props => {
   if (!props.fields || !props.tables || !props.tables.DEFAULT) {
-    return <div>loading...</div>
+    return <div>Loading...</div>
   }
 
+  const { widgetBackgroundColor } = props.style
+  const backgroundColor =
+    widgetBackgroundColor.value.color || widgetBackgroundColor.defaultValue
+
+  const widgetStyles = css`
+    background: ${backgroundColor};
+    padding: 20px;
+    border-radius: 5px;
+  `
+
   return (
-    <React.Fragment>
-      <Title
-        text={props.style.title.value}
-        defaultValue={props.style.title.defaultValue}
-      />
-      <PValue
+    <div css={widgetStyles}>
+      <SignificanceAlert
         p={props.pValue}
-        thresholdObj={props.style.significanceThreshold}
+        background={props.style.alertBackgroundColor}
+        font={props.style.alertFontColor}
       />
-      <Campaigns />
-    </React.Fragment>
+      <Title
+        subtitle={props.style.subtitle.value}
+        override={props.style.baseMetric.value}
+        defaultValue={props.fields.metricID[0].name}
+        fontColor={props.style.tableFontColor}
+      />
+      <Campaigns
+        pastTenseLabel={props.style.baseMetricPastTense}
+        fontColor={props.style.tableFontColor}
+      />
+    </div>
   )
 }
 

@@ -37,10 +37,45 @@
           "defaultValue": "Campaign Performance"
         },
         {
+          "id": "subtitle",
+          "label": "Subtitle",
+          "type": "TEXTINPUT"
+        },
+        {
           "id": "significanceThreshold",
           "label": "Significance Threshold",
           "type": "TEXTINPUT",
           "defaultValue": "0.05"
+        },
+        {
+          "id": "widgetBackgroundColor",
+          "label": "Widget Background Color",
+          "type": "FILL_COLOR"
+        },
+        {
+          "id": "alertBackgroundColor",
+          "label": "Alert Background Color",
+          "type": "FILL_COLOR"
+        },
+        {
+          "id": "alertFontColor",
+          "label": "Alert Font Color",
+          "type": "FONT_COLOR"
+        },
+        {
+          "id": "tableFontColor",
+          "label": "Table Font Color",
+          "type": "FONT_COLOR"
+        },
+        {
+          "id": "baseMetric",
+          "label": "Base Metric",
+          "type": "TEXTINPUT"
+        },
+        {
+          "id": "baseMetricPastTense",
+          "label": "Base Metric (Past Tense)",
+          "type": "TEXTINPUT"
         }
       ]
     }

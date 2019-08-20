@@ -2,9 +2,9 @@
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Color from 'color'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
+import PerformanceCell from './PerformanceCell'
 
 const Campaign = ({
   name,
@@ -12,32 +12,18 @@ const Campaign = ({
   impressions,
   expected,
   expectedPercentage,
-  opacity,
+  fontColor,
 }) => {
-  const positiveColor = '#246EB9'
-  const negativeColor = '#F06543'
-  // const multiplier = 0.5
-
-  /*
-  dark blue: #0279C7
-  */
-
-  const adjustedColor =
-    expectedPercentage > 0
-      ? Color(positiveColor).darken(expectedPercentage)
-      : Color(negativeColor).darken(expectedPercentage)
-
-  const expectedStyle = css`
-    background: #999;
-  `
-
   const cellStyle = css`
-    // opacity: ${opacity};
+    color: ${fontColor} !important;
+    border-bottom: none !important;
+    font-size: 18px !important;
+    line-height: 0.5 !important;
+    padding: 6px 40px 6px 16px !important;
   `
 
-  const colorStyle = css`
-    background: ${adjustedColor.hsl().string()};
-    color: ${adjustedColor.isLight() ? '#000' : '#dfdfdf'} !important;
+  const impressionStyle = css`
+    border-right: solid 1px #ddd;
   `
 
   return (
@@ -45,17 +31,17 @@ const Campaign = ({
       <TableCell role="cell" css={cellStyle}>
         {name}
       </TableCell>
-      <TableCell role="cell" css={cellStyle} align="right">
+      <TableCell role="cell" align="left" css={[impressionStyle, cellStyle]}>
         {impressions.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={cellStyle} align="right">
+      <TableCell role="cell" align="left" css={cellStyle}>
         {clicks.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={colorStyle} align="right">
+      <TableCell role="cell" align="left" css={cellStyle}>
         {expected.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={colorStyle} align="right">
-        {expectedPercentage.toFixed(2)}
+      <TableCell role="cell" align="left" css={cellStyle}>
+        <PerformanceCell value={expectedPercentage.toFixed(2)} />
       </TableCell>
     </TableRow>
   )
@@ -68,7 +54,7 @@ Campaign.propTypes = {
   notClicked: PropTypes.number,
   expected: PropTypes.number,
   expectedPercentage: PropTypes.number,
-  opacity: PropTypes.number,
+  fontColor: PropTypes.string,
 }
 
 export default Campaign

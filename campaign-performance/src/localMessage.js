@@ -9,11 +9,11 @@ export const message = {
     DEFAULT: [
       {
         dimID: ['Campaign 1'],
-        metricID: [70, 5290],
+        metricID: [70, 5200],
       },
       {
         dimID: ['Camp 4'],
-        metricID: [45, 2891],
+        metricID: [40, 2891],
       },
       {
         dimID: ['Camp 2'],
@@ -54,9 +54,31 @@ export const message = {
       value: 'Campaign Performance',
       defaultValue: 'Backup Title',
     },
+    subtitle: {
+      value: 'Subtitle here',
+    },
     significanceThreshold: {
       value: '0.05',
       defaultValue: '0.05',
+    },
+    alertBackgroundColor: {
+      value: { color: '#23064D', opacity: 1 },
+    },
+    alertFontColor: {
+      value: { color: '#fff', opacity: 1 },
+    },
+    widgetBackgroundColor: {
+      value: { color: '#3A0A81', opacity: 1 },
+    },
+    baseMetric: {
+      value: 'Conversions',
+    },
+    baseMetricPastTense: {
+      value: 'Converted',
+    },
+    tableFontColor: {
+      value: { color: '#FBFAFC', opacity: 1 },
+      defaultValue: '#fff',
     },
   },
 }
