@@ -4,6 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReportProblemOutlined from '@material-ui/icons/ReportProblemOutlined'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import InfoPopover from '../components/InfoPopover'
 
 const SignificanceAlert = ({ p, background, font }) => {
   const alert = p < 0.05
@@ -31,6 +32,7 @@ const SignificanceAlert = ({ p, background, font }) => {
     color: ${fontColor};
     display: flex;
     align-items: center;
+    position: relative;
   `
 
   const headlineStyles = css`
@@ -44,6 +46,13 @@ const SignificanceAlert = ({ p, background, font }) => {
     margin-top: 10px;
   `
 
+  const popoverHeader = css`
+    padding: 0;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    display: block;
+    font-weight: bold;
+  `
   return (
     <div css={alertStyles}>
       {alert ? (
@@ -54,6 +63,14 @@ const SignificanceAlert = ({ p, background, font }) => {
       <div>
         <h3 css={headlineStyles}>{headline}</h3>
         <h4 css={explanationStyles}>{explanation}</h4>
+        <InfoPopover placement="left-start">
+          <span css={popoverHeader}>Discovery</span>
+          Once the numbers have been run through the test, you will see the
+          expected value for your observed outcome. We will also show the
+          difference between what was expected and what was actually observed.
+          This is helpful if a relationship was found to see what groups did
+          better than expected and what groups did worse.
+        </InfoPopover>
       </div>
     </div>
   )
