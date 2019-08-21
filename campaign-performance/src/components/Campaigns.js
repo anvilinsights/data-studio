@@ -18,10 +18,16 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Campaign from './Campaign'
 import { DataContext } from '../utils/DataContext'
 
-const Campaigns = ({ pastTenseLabel, fontColor }) => {
+const Campaigns = ({
+  pastTenseLabel,
+  fontColor,
+  defaultMetric,
+  overrideMetric,
+}) => {
   const { value: dataFrame } = React.useContext(DataContext)
   const pastTense = pastTenseLabel.value || pastTenseLabel.defaultValue
   const color = fontColor.value.color || fontColor.defaultValue
+  const performanceLabel = overrideMetric || defaultMetric
 
   const tableStyle = css`
     width: 1100px !important;
@@ -141,7 +147,7 @@ const Campaigns = ({ pastTenseLabel, fontColor }) => {
             <span css={subHeadStyle}>Expected</span> {pastTense}
           </TableCell>
           <TableCell role="columnheader" align="left" css={headerStyle}>
-            <span css={subHeadStyle}>Performance</span> Conversions
+            <span css={subHeadStyle}>Performance</span> {performanceLabel}
           </TableCell>
         </TableRow>
       </TableHead>
@@ -152,6 +158,8 @@ const Campaigns = ({ pastTenseLabel, fontColor }) => {
 
 Campaigns.propTypes = {
   campaigns: PropTypes.array,
+  overrideMetric: PropTypes.string,
+  defaultMetric: PropTypes.string,
 }
 
 export default Campaigns
