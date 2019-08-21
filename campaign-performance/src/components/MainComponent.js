@@ -6,12 +6,12 @@ import Title from './Title'
 import SignificanceAlert from './SignificanceAlert'
 import InfoPopover from './InfoPopover'
 
-const MainComponent = props => {
-  if (!props.fields || !props.tables || !props.tables.DEFAULT) {
+const MainComponent = ({ style, fields, pValue, tables }) => {
+  if (!fields || !tables || !tables.DEFAULT) {
     return <div>Loading...</div>
   }
 
-  const { widgetBackgroundColor } = props.style
+  const { widgetBackgroundColor } = style
   const backgroundColor =
     widgetBackgroundColor.value.color || widgetBackgroundColor.defaultValue
 
@@ -30,22 +30,28 @@ const MainComponent = props => {
     font-weight: bold;
   `
 
+  const normalHeader = css`
+    font-weight: normal;
+  `
+
   return (
     <div css={widgetStyles}>
       <SignificanceAlert
-        p={props.pValue}
-        background={props.style.alertBackgroundColor}
-        font={props.style.alertFontColor}
+        p={pValue}
+        background={style.alertBackgroundColor}
+        font={style.alertFontColor}
       />
       <Title
-        subtitle={props.style.subtitle.value}
-        override={props.style.baseMetric.value}
-        defaultValue={props.fields.metricID[0].name}
-        fontColor={props.style.tableFontColor}
+        subtitle={style.subtitle.value}
+        override={style.baseMetric.value}
+        defaultValue={fields.metricID[0].name}
+        fontColor={style.tableFontColor}
       />
       <Campaigns
-        pastTenseLabel={props.style.baseMetricPastTense}
-        fontColor={props.style.tableFontColor}
+        pastTenseLabel={style.baseMetricPastTense}
+        defaultMetric={fields.metricID[0].name}
+        overrideMetric={style.baseMetric.value}
+        fontColor={style.tableFontColor}
       />
       <InfoPopover
         placement="left-end"
@@ -53,7 +59,9 @@ const MainComponent = props => {
         arrowOffset={110}
         offset={50}
       >
-        <span css={popoverHeader}>About StatsAnalyzer</span>
+        <span css={popoverHeader}>
+          About Stats<span css={normalHeader}>Analyzer</span>
+        </span>
         This tool works using a statistical method called Chi-Squared.
         Chi-Squared allows you to test for a relationship between categorical
         data (like colors, sports teams, or flavors of ice cream). It might have

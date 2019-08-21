@@ -44,10 +44,6 @@ const InfoPopover = ({
     width: 200px;
   `
 
-  const tooltipStyle = css`
-    top: -50px;
-  `
-
   const arrowStyle = css`
     z-index: 1;
     position: absolute;
