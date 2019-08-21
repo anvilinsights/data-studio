@@ -9,12 +9,16 @@ import TableHead from '@material-ui/core/TableHead'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import TableRow from '@material-ui/core/TableRow'
 import normalize from 'array-normalize'
+import InfoIcon from '@material-ui/icons/Info'
+import Popper from '@material-ui/core/Popper'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
 import Campaign from './Campaign'
 import { DataContext } from '../utils/DataContext'
 
 const Campaigns = ({ pastTenseLabel, fontColor }) => {
-  console.log('fontColor', fontColor)
   const { value: dataFrame } = React.useContext(DataContext)
   const pastTense = pastTenseLabel.value || pastTenseLabel.defaultValue
   const color = fontColor.value.color || fontColor.defaultValue
@@ -25,6 +29,19 @@ const Campaigns = ({ pastTenseLabel, fontColor }) => {
 
   const exPct = dataFrame.select('expectedPercentage').toDict()
   const normalizedExpected = normalize(exPct['expectedPercentage'])
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  function handleOpen(event) {
+    setAnchorEl(event.currentTarget)
+  }
+
+  function handleClose() {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'simple-popover' : undefined
 
   // Convert from dataframe to key/val pairs
   const campList = dataFrame
@@ -59,6 +76,44 @@ const Campaigns = ({ pastTenseLabel, fontColor }) => {
 
   const noSubHead = css`
     padding-bottom: 0px !important;
+  `
+
+  const infoStyle = css`
+    opacity: 0.5;
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    cursor: pointer;
+  `
+
+  const popoverStyles = css`
+    padding: 20px;
+    font-size: 11px !important;
+    width: 200px;
+  `
+
+  const popoverHeader = css`
+    padding: 0;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    display: block;
+    font-weight: bold;
+  `
+
+  const arrowStyle = css`
+    z-index: 1;
+    position: absolute;
+    font-size: 7px;
+    margin: auto;
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1.5em solid white;
+    left: 239px;
+    top: 3px;
   `
 
   return (
