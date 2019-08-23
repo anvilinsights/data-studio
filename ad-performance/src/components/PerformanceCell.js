@@ -39,7 +39,7 @@ const PerformanceCell = ({ value }) => {
 }
 
 PerformanceCell.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.number,
 }
 
 export default PerformanceCell

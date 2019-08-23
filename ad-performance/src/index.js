@@ -69,8 +69,6 @@ class AppComponent extends React.Component {
       id: x.dimID[10],
     }))
 
-    console.log('rows', rows)
-
     const frame = new Dataframe(rows, [
       'clicks',
       'impressions',
@@ -88,30 +86,62 @@ class AppComponent extends React.Component {
       'path2',
       'finalUrl',
       'id',
-      // 'expected',
-      // 'expectedPercentage',
     ])
-
-    console.log('frame', frame)
 
     // console.log('grandTotal', frame.stat.sum('impressions'))
     // console.log('click column total', frame.stat.sum('clicks'))
 
     const dataFrame = frame
       .map(row => {
-        const colTotal = frame.stat.sum('clicks')
+        const clickColTotal = frame.stat.sum('clicks')
+        const conversionColTotal = frame.stat.sum('conversions')
         const rowTotal = row.get('impressions')
         const grandTotal = frame.stat.sum('impressions')
-        const expected = stats.expected(rowTotal, colTotal, grandTotal)
-        const exPct = stats.expectedPercentage(expected, row.get('clicks')) - 1
-        return row.set('expected', expected).set('expectedPercentage', exPct)
+
+        const expectedClicks = stats.expected(
+          rowTotal,
+          clickColTotal,
+          grandTotal,
+        )
+
+        const expectedConversions = stats.expected(
+          rowTotal,
+          conversionColTotal,
+          grandTotal,
+        )
+
+        const exClicksPct =
+          stats.expectedPercentage(expectedClicks, row.get('clicks')) - 1
+
+        const exConversionsPct =
+          stats.expectedPercentage(
+            expectedConversions,
+            row.get('conversions'),
+          ) - 1
+        return row
+          .set('expectedClicks', expectedClicks)
+          .set('expectedClicksPercentage', exClicksPct)
+          .set('expectedConversions', expectedConversions)
+          .set('expectedConversionsPercentage', exConversionsPct)
       })
-      .sortBy('expectedPercentage', true)
+      .sortBy('expectedClicksPercentage', true)
 
-    const pStats = dataFrame.select('clicks', 'expected').toDict()
-    const pValue = stats.pValue(pStats.clicks, pStats.expected, 1)
+    const pStatsClicks = dataFrame.select('clicks', 'expectedClicks').toDict()
+    const pValueClicks = stats.pValue(
+      pStatsClicks.clicks,
+      pStatsClicks.expectedClicks,
+      1,
+    )
+    const pStatsConversions = dataFrame
+      .select('conversions', 'expectedConversions')
+      .toDict()
+    const pValueConversions = stats.pValue(
+      pStatsConversions.conversions,
+      pStatsConversions.expectedConversions,
+      1,
+    )
 
-    this.setState({ ...data, dataFrame, pValue })
+    this.setState({ ...data, dataFrame, pValueClicks, pValueConversions })
     // this.setState({ ...data, dataFrame })
   }
 

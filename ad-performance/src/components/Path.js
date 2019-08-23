@@ -22,12 +22,16 @@ const Path = ({ path1, path2 }) => {
     margin-top: 0;
   `
 
-  return (
-    <p css={descriptionStyle}>
-      {'<'}domain{'>'}
-      {pathString}
-    </p>
-  )
+  if (pathString == 0) {
+    return <span />
+  } else {
+    return (
+      <p css={descriptionStyle}>
+        {'<'}domain{'>'}
+        {pathString}
+      </p>
+    )
+  }
 }
 
 Path.propTypes = {
