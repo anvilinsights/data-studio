@@ -13,7 +13,7 @@ import normalize from 'array-normalize'
 import Ad from './Ad'
 import { DataContext } from '../utils/DataContext'
 
-const Ads = props => {
+const Ads = ({ useConversionCols }) => {
   const { value: dataFrame } = React.useContext(DataContext)
 
   const tableStyle = css`
@@ -31,8 +31,10 @@ const Ads = props => {
         clicks={x.clicks}
         impressions={x.impressions}
         conversions={x.conversions}
-        expected={x.expected}
-        expectedPercentage={x.expectedPercentage}
+        expectedClicks={x.expectedClicks}
+        expectedClicksPercentage={x.expectedClicksPercentage}
+        expectedConversions={x.expectedConversions}
+        expectedConversionsPercentage={x.expectedConversionsPercentage}
         campaign={x.campaign}
         headline={x.headline}
         headline1={x.headline1}
@@ -45,6 +47,7 @@ const Ads = props => {
         finalUrl={x.finalUrl}
         id={x.id}
         cost={x.cost}
+        useConversionCols={useConversionCols}
         key={i}
       />
     ))
@@ -66,10 +69,10 @@ const Ads = props => {
             Conversions
           </TableCell>
           <TableCell role="columnheader" align="right">
-            Expected Clicks
+            Expected {`${useConversionCols ? 'Conversions' : 'Clicks'}`}
           </TableCell>
           <TableCell role="columnheader" align="right">
-            Performance
+            Performance {`${useConversionCols ? 'Conversions' : 'Clicks'}`}
           </TableCell>
         </TableRow>
       </TableHead>
@@ -80,6 +83,7 @@ const Ads = props => {
 
 Ads.propTypes = {
   ads: PropTypes.array,
+  useConversionCols: PropTypes.bool,
 }
 
 export default Ads

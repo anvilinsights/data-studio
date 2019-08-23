@@ -28,9 +28,12 @@ const Ad = ({
   path2,
   finalUrl,
   id,
-  expected,
-  expectedPercentage,
+  expectedClicks,
+  expectedClicksPercentage,
+  expectedConversions,
+  expectedConversionsPercentage,
   cost,
+  useConversionCols,
 }) => {
   const positiveColor = '#246EB9'
   const negativeColor = '#F06543'
@@ -38,9 +41,9 @@ const Ad = ({
   const opacity = 0
 
   const adjustedColor =
-    expectedPercentage > 0
-      ? Color(positiveColor).darken(expectedPercentage)
-      : Color(negativeColor).darken(expectedPercentage)
+    expectedClicksPercentage > 0
+      ? Color(positiveColor).darken(expectedClicksPercentage)
+      : Color(negativeColor).darken(expectedClicksPercentage)
 
   const expectedStyle = css`
     background: #999;
@@ -67,6 +70,8 @@ const Ad = ({
     margin-bottom: 0px;
     margin-top: 0;
     font-size: 14px;
+    font-weight: bold;
+    display: block;
   `
 
   const accordionStyles = css`
@@ -85,10 +90,12 @@ const Ad = ({
             id="panel-header"
           >
             <Typography>
-              <h3 css={headlineStyle}>
+              <span css={headlineStyle}>
                 {headline} {exists(headline1) && <span>{headline1}</span>}
-              </h3>
-              {exists(headline2) && <h4 css={headlineStyle}>{headline2}</h4>}
+              </span>
+              {exists(headline2) && (
+                <span css={headlineStyle}>{headline2}</span>
+              )}
               {exists(description) && (
                 <span css={descriptionStyle}>{description}</span>
               )}
@@ -115,15 +122,29 @@ const Ad = ({
       <TableCell role="cell" css={cellStyle} align="right">
         {clicks.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={colorStyle} align="right">
+      <TableCell role="cell" css={cellStyle} align="right">
         {conversions.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" css={colorStyle} align="right">
-        {expected.toFixed(2)}
-      </TableCell>
-      <TableCell role="cell" css={colorStyle} align="right">
-        <PerformanceCell value={expectedPercentage} />
-      </TableCell>
+      {!useConversionCols && (
+        <TableCell role="cell" css={colorStyle} align="right">
+          {expectedClicks.toFixed(2)}
+        </TableCell>
+      )}
+      {!useConversionCols && (
+        <TableCell role="cell" css={colorStyle} align="right">
+          <PerformanceCell value={expectedClicksPercentage} />
+        </TableCell>
+      )}
+      {useConversionCols && (
+        <TableCell role="cell" css={colorStyle} align="right">
+          {expectedConversions.toFixed(2)}
+        </TableCell>
+      )}
+      {useConversionCols && (
+        <TableCell role="cell" css={colorStyle} align="right">
+          <PerformanceCell value={expectedConversionsPercentage} />
+        </TableCell>
+      )}
     </TableRow>
   )
 }
@@ -141,6 +162,9 @@ Ad.propTypes = {
   path1: PropTypes.string,
   path2: PropTypes.string,
   finalUrl: PropTypes.string,
+  expectedClicks: PropTypes.number,
+  expectedClicksPercentage: PropTypes.number,
+  useConversionCols: PropTypes.bool,
 }
 
 export default Ad

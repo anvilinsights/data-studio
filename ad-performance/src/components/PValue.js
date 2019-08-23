@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const PValue = ({ p, thresholdObj }) => {
-  const pVal = parseFloat(p.toFixed(4))
+const PValue = ({ pClicks, pConversions, thresholdObj, useConversionCols }) => {
+  let pVal = useConversionCols ? pConversions : pClicks
+  pVal = parseFloat(pVal.toFixed(4))
 
   const { value, defaultValue } = thresholdObj
   const threshold = parseFloat(value || defaultValue)
@@ -20,11 +21,13 @@ const PValue = ({ p, thresholdObj }) => {
 }
 
 PValue.propTypes = {
-  p: PropTypes.number,
+  pClicks: PropTypes.number,
+  pConversions: PropTypes.number,
   thresholdObj: PropTypes.shape({
     value: PropTypes.string,
     defaultValue: PropTypes.string,
   }),
+  useConversionCols: PropTypes.bool,
 }
 
 export default PValue
