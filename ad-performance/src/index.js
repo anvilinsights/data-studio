@@ -110,6 +110,14 @@ class AppComponent extends React.Component {
           grandTotal,
         )
 
+        // Non-predictive stats
+        const conversionRate =
+          (row.get('conversions') / row.get('clicks')) * 100
+        const ctr = (row.get('clicks') / row.get('impressions')) * 100
+        const conversionsPerImpression =
+          (row.get('conversions') / row.get('impressions')) * 100
+        //
+
         const exClicksPct =
           stats.expectedPercentage(expectedClicks, row.get('clicks')) - 1
 
@@ -123,6 +131,9 @@ class AppComponent extends React.Component {
           .set('expectedClicksPercentage', exClicksPct)
           .set('expectedConversions', expectedConversions)
           .set('expectedConversionsPercentage', exConversionsPct)
+          .set('conversionRate', conversionRate)
+          .set('ctr', ctr)
+          .set('conversionsPerImpression', conversionsPerImpression)
       })
       .sortBy('expectedClicksPercentage', true)
 
@@ -142,7 +153,6 @@ class AppComponent extends React.Component {
     )
 
     this.setState({ ...data, dataFrame, pValueClicks, pValueConversions })
-    // this.setState({ ...data, dataFrame })
   }
 
   render() {
