@@ -10,9 +10,12 @@ export const message = {
       {
         dimID: [
           'Atlanta Commercial - CPC',
-          'Call: Overhead Door™ of Atlanta',
+          '',
           'Your #1 Entry Door Provider',
           'Counter Doors. Call Now!',
+          '--',
+          'Your Overhead Door Company of Atlanta™. Since 1935. Call For Professional Service Today!',
+          'Call Overhead Door™ Co. Today!',
           'overhead_door',
           'commercial',
           'https://commercial.overheaddooratlanta.com/products/commercial-overhead-doors/',
@@ -22,9 +25,12 @@ export const message = {
       {
         dimID: [
           'Atlanta Commercial - CPC',
-          'Call: Overhead Door™ of Atlanta',
-          'Your Leader In Automated Steel Doors. Contact Us Today To Learn More.',
-          'Your Atlanta Rolling Door Professionals. Call Us Today!',
+          '',
+          'Your #1 Entry Door Provider',
+          'Counter Doors. Call Now!',
+          '--',
+          'Your Overhead Door Company of Atlanta™. Since 1935. Call For Professional Service Today!',
+          'Call Overhead Door™ Co. Today!',
           'overhead_door',
           'commercial',
           'https://commercial.overheaddooratlanta.com/products/commercial-overhead-doors/',
@@ -34,9 +40,12 @@ export const message = {
       {
         dimID: [
           'Atlanta Commercial - CPC',
-          'Call: OverheadDoorAtlanta.com',
-          'Call Now For Automated Gate',
-          'Installation, Maintenance Or Repair',
+          '',
+          'Your #1 Entry Door Provider',
+          'Counter Doors. Call Now!',
+          '--',
+          'Your Overhead Door Company of Atlanta™. Since 1935. Call For Professional Service Today!',
+          'Call Overhead Door™ Co. Today!',
           'overhead_door',
           'commercial',
           'https://commercial.overheaddooratlanta.com/products/commercial-overhead-doors/',
@@ -46,9 +55,12 @@ export const message = {
       {
         dimID: [
           'Atlanta Commercial - CPC',
-          'Call: Overhead Door™ of Atlanta',
-          'Serving Atlanta Since 1935. Call Us Today For A Free Automated Gate Estimate.',
-          'Installation, Maintenance Or Repair',
+          '',
+          'Your #1 Entry Door Provider',
+          'Counter Doors. Call Now!',
+          '--',
+          'Your Overhead Door Company of Atlanta™. Since 1935. Call For Professional Service Today!',
+          'Call Overhead Door™ Co. Today!',
           'overhead_door',
           'commercial',
           'https://commercial.overheaddooratlanta.com/products/commercial-overhead-doors/',

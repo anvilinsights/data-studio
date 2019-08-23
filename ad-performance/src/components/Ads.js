@@ -17,8 +17,13 @@ const Ads = ({ useConversionCols }) => {
   const { value: dataFrame } = React.useContext(DataContext)
 
   const tableStyle = css`
-    width: 1100px !important;
+    width: 98% !important;
   `
+
+  const headerStyle = {
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+  }
 
   // const exPct = dataFrame.select('expectedPercentage').toDict()
   // const normalizedExpected = normalize(exPct['expectedPercentage'])
@@ -47,6 +52,9 @@ const Ads = ({ useConversionCols }) => {
         finalUrl={x.finalUrl}
         id={x.id}
         cost={x.cost}
+        conversionRate={x.conversionRate}
+        ctr={x.ctr}
+        conversionsPerImpression={x.conversionsPerImpression}
         useConversionCols={useConversionCols}
         key={i}
       />
@@ -57,22 +65,55 @@ const Ads = ({ useConversionCols }) => {
       <TableHead role="rowgroup">
         <TableRow role="row">
           <TableCell role="columnheader" align="left">
-            Ad
+            &nbsp;
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Impressions
+          <TableCell role="columnheader" align="right" title="Impressions">
+            Imp.
+          </TableCell>
+          <TableCell
+            role="columnheader"
+            align="right"
+            title="Click-Through Rate"
+          >
+            CTR
+          </TableCell>
+          <TableCell role="columnheader" align="right" title="Conversion Rate">
+            Conv. Rate
+          </TableCell>
+          <TableCell
+            role="columnheader"
+            align="right"
+            title="Conversions Per Impression"
+          >
+            Conv/Imp
           </TableCell>
           <TableCell role="columnheader" align="right">
             Clicks
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Conversions
+          <TableCell role="columnheader" align="right" title="Conversions">
+            Conv.
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Expected {`${useConversionCols ? 'Conversions' : 'Clicks'}`}
+          <TableCell
+            role="columnheader"
+            align="right"
+            title={`Expected ${useConversionCols ? 'Conversions' : 'Clicks'}`}
+          >
+            Expected{' '}
+            <span css={headerStyle}>{`${
+              useConversionCols ? 'Conv.' : 'Clicks'
+            }`}</span>
           </TableCell>
-          <TableCell role="columnheader" align="right">
-            Performance {`${useConversionCols ? 'Conversions' : 'Clicks'}`}
+          <TableCell
+            role="columnheader"
+            align="right"
+            title={`Performance ${
+              useConversionCols ? 'Conversions' : 'Clicks'
+            }`}
+          >
+            Performance{' '}
+            <span css={headerStyle}>{`${
+              useConversionCols ? 'Conv.' : 'Clicks'
+            }`}</span>
           </TableCell>
         </TableRow>
       </TableHead>

@@ -15,11 +15,11 @@ const Path = ({ path1, path2 }) => {
   }
 
   const descriptionStyle = css`
-    color: green;
+    color: #39aa33;
     font-size: 12px;
-    line-height: 4px;
-    padding-top: 0;
-    margin-top: 0;
+    line-height: 1em !important;
+    margin: 3px;
+    padding: 0;
   `
 
   if (pathString == 0) {

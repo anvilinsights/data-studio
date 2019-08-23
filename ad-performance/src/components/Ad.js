@@ -33,6 +33,9 @@ const Ad = ({
   expectedConversions,
   expectedConversionsPercentage,
   cost,
+  ctr,
+  conversionRate,
+  conversionsPerImpression,
   useConversionCols,
 }) => {
   const positiveColor = '#246EB9'
@@ -50,7 +53,12 @@ const Ad = ({
   `
 
   const cellStyle = css`
-    // opacity: ${opacity};
+    padding: 6px 20px 6px 16px !important;
+    width: 400px;
+  `
+
+  const adStyle = css`
+    line-height: 1.1em !important;
   `
 
   const colorStyle = css`
@@ -61,9 +69,12 @@ const Ad = ({
   const descriptionStyle = css`
     color: grey;
     font-size: 12px;
-    line-height: 4px;
-    padding-top: 0;
-    margin-top: 0;
+    padding: 0;
+    margin: 0;
+  `
+
+  const linkStyle = css`
+    color: #5881d8;
   `
 
   const headlineStyle = css`
@@ -89,28 +100,31 @@ const Ad = ({
             expandIcon={<ExpandMoreIcon />}
             id="panel-header"
           >
-            <Typography>
+            <Typography css={adStyle}>
               <span css={headlineStyle}>
                 {headline} {exists(headline1) && <span>{headline1}</span>}
               </span>
               {exists(headline2) && (
                 <span css={headlineStyle}>{headline2}</span>
               )}
+              <Path path1={path1} path2={path2} />
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography css={adStyle}>
               {exists(description) && (
                 <span css={descriptionStyle}>{description}</span>
               )}
               {exists(description1) && (
                 <span css={descriptionStyle}>{description1}</span>
               )}
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
               {exists(description2) && (
                 <p css={descriptionStyle}>{description2}</p>
               )}
-              <Path path1={path1} path2={path2} />
-              {exists(finalUrl) && <p css={descriptionStyle}>{finalUrl}</p>}
+
+              {exists(finalUrl) && (
+                <p css={[descriptionStyle, linkStyle]}>{finalUrl}</p>
+              )}
               {exists(id) && <p css={descriptionStyle}>ID: {id}</p>}
             </Typography>
           </ExpansionPanelDetails>
@@ -118,6 +132,15 @@ const Ad = ({
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
         {impressions.toLocaleString()}
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
+        {ctr.toFixed(1)}%
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
+        {conversionRate.toFixed(1)}%
+      </TableCell>
+      <TableCell role="cell" css={cellStyle} align="right">
+        {conversionsPerImpression.toFixed(1)}%
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
         {clicks.toLocaleString()}
@@ -165,6 +188,9 @@ Ad.propTypes = {
   expectedClicks: PropTypes.number,
   expectedClicksPercentage: PropTypes.number,
   useConversionCols: PropTypes.bool,
+  ctr: PropTypes.number,
+  conversionRate: PropTypes.number,
+  conversionsPerImpression: PropTypes.number,
 }
 
 export default Ad
