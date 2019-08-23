@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { exists } from '../utils/exist'
+import { exists } from '../utils'
 
 const Path = ({ path1, path2 }) => {
   let pathString = ''

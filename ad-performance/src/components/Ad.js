@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Path from './Path'
 import PerformanceCell from './PerformanceCell'
-import { exists } from '../utils/exist'
+import { exists, percent } from '../utils'
 
 const Ad = ({
   clicks,
@@ -134,13 +134,13 @@ const Ad = ({
         {impressions.toLocaleString()}
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
-        {ctr.toFixed(1)}%
+        {percent(ctr.toFixed(1))}
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
-        {conversionRate.toFixed(1)}%
+        {percent(conversionRate.toFixed(1))}
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
-        {conversionsPerImpression.toFixed(1)}%
+        {percent(conversionsPerImpression.toFixed(1))}
       </TableCell>
       <TableCell role="cell" css={cellStyle} align="right">
         {clicks.toLocaleString()}
