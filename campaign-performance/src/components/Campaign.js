@@ -26,21 +26,25 @@ const Campaign = ({
     border-right: solid 1px #ddd;
   `
 
+  const performanceStyle = css`
+    width: 70px !important;
+  `
+
   return (
     <TableRow role="row">
       <TableCell role="cell" css={cellStyle}>
         {name}
       </TableCell>
-      <TableCell role="cell" align="left" css={[impressionStyle, cellStyle]}>
+      <TableCell role="cell" align="right" css={[impressionStyle, cellStyle]}>
         {impressions.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" align="left" css={cellStyle}>
+      <TableCell role="cell" align="right" css={cellStyle}>
         {clicks.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" align="left" css={cellStyle}>
+      <TableCell role="cell" align="right" css={cellStyle}>
         {expected.toLocaleString()}
       </TableCell>
-      <TableCell role="cell" align="left" css={cellStyle}>
+      <TableCell role="cell" align="left" css={[cellStyle, performanceStyle]}>
         <PerformanceCell value={expectedPercentage.toFixed(2)} />
       </TableCell>
     </TableRow>
