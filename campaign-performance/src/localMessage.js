@@ -57,6 +57,9 @@ export const message = {
     subtitle: {
       value: 'Subtitle here',
     },
+    impressionsLabel: {
+      value: 'Impressions',
+    },
     significanceThreshold: {
       value: '0.05',
       defaultValue: '0.05',

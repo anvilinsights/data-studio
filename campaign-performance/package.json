@@ -15,6 +15,7 @@
     "update_message": "dscc-scripts viz update_message -f object",
     "start": "dscc-scripts viz start",
     "deploy:dev": "yarn build:dev && yarn push:dev",
+    "deploy:prod": "yarn build:prod && yarn push:prod",
     "test": "jest --watch"
   },
   "devDependencies": {
