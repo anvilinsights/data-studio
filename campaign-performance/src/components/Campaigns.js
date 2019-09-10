@@ -23,11 +23,14 @@ const Campaigns = ({
   fontColor,
   defaultMetric,
   overrideMetric,
+  impressionsLabel,
+  defaultImpressionsLabel,
 }) => {
   const { value: dataFrame } = React.useContext(DataContext)
   const pastTense = pastTenseLabel.value || pastTenseLabel.defaultValue
   const color = fontColor.value.color || fontColor.defaultValue
   const performanceLabel = overrideMetric || defaultMetric
+  const impressions = impressionsLabel.value || defaultImpressionsLabel
 
   const tableStyle = css`
     width: 1100px !important;
@@ -138,7 +141,7 @@ const Campaigns = ({
             align="left"
             css={[headerStyle, noSubHead]}
           >
-            Impressions
+            {impressions}
           </TableCell>
           <TableCell role="columnheader" align="left" css={headerStyle}>
             <span css={subHeadStyle}>Actual</span> {pastTense}

@@ -52,6 +52,8 @@ const MainComponent = ({ style, fields, pValue, tables }) => {
         defaultMetric={fields.metricID[0].name}
         overrideMetric={style.baseMetric.value}
         fontColor={style.tableFontColor}
+        impressionsLabel={style.impressionsLabel}
+        defaultImpressionsLabel={fields.metricID[1].name}
       />
       <InfoPopover
         placement="left-end"

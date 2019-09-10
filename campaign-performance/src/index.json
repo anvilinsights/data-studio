@@ -76,6 +76,11 @@
           "id": "baseMetricPastTense",
           "label": "Base Metric (Past Tense)",
           "type": "TEXTINPUT"
+        },
+        {
+          "id": "impressionsLabel",
+          "label": "All Events Label (Impressions, etc.)",
+          "type": "TEXTINPUT"
         }
       ]
     }
