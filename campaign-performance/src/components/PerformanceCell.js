@@ -28,12 +28,18 @@ const PerformanceCell = ({ value }) => {
 
   const spanStyle = css`
     color: ${color};
+    display: flex;
+    justify-content: space-between;
+  `
+
+  const item = css`
+    align-self: baseline;
   `
 
   return (
     <span css={spanStyle}>
-      <ForwardIcon css={getStyles(sign)} />
-      {absValue}%
+      <ForwardIcon css={[getStyles(sign), item]} />
+      <span css={item}>{absValue}%</span>
     </span>
   )
 }

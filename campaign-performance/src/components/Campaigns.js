@@ -138,18 +138,18 @@ const Campaigns = ({
           </TableCell>
           <TableCell
             role="columnheader"
-            align="left"
+            align="right"
             css={[headerStyle, noSubHead]}
           >
             {impressions}
           </TableCell>
-          <TableCell role="columnheader" align="left" css={headerStyle}>
+          <TableCell role="columnheader" align="right" css={headerStyle}>
             <span css={subHeadStyle}>Actual</span> {pastTense}
           </TableCell>
-          <TableCell role="columnheader" align="left" css={headerStyle}>
+          <TableCell role="columnheader" align="right" css={headerStyle}>
             <span css={subHeadStyle}>Expected</span> {pastTense}
           </TableCell>
-          <TableCell role="columnheader" align="left" css={headerStyle}>
+          <TableCell role="columnheader" align="right" css={headerStyle}>
             <span css={subHeadStyle}>Performance</span> {performanceLabel}
           </TableCell>
         </TableRow>
