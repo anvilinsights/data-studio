@@ -1,0 +1,104 @@
+{
+  "data": [
+    {
+      "id": "data",
+      "label": "Data",
+      "elements": [
+        {
+          "id": "target",
+          "label": "Target",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "id": "actual",
+          "label": "Actual",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        }
+      ]
+    }
+  ],
+  "style": [
+    {
+      "id": "config",
+      "label": "Config",
+      "elements": [
+        {
+          "id": "title",
+          "label": "Title",
+          "type": "TEXTINPUT",
+          "defaultValue": "Total Revenue - Compared to Target"
+        },
+        {
+          "id": "measure",
+          "label": "Data Measure",
+          "type": "TEXTINPUT",
+          "defaultValue": "Revenue"
+        },
+        {
+          "id": "format",
+          "label": "Data Format",
+          "defaultValue": "percentage",
+          "type": "SELECT_SINGLE",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "Percentage"
+            },
+            {
+              "value": "values",
+              "label": "Values"
+            }
+          ]
+        },
+        {
+          "id": "negativeColor",
+          "label": "Below Target Color",
+          "type": "FONT_COLOR",
+          "defaultValue": "#E64A19"
+        },
+        {
+          "id": "positiveColor",
+          "label": "Above Target Color",
+          "type": "FONT_COLOR",
+          "defaultValue": "#00838F"
+        },
+        {
+          "id": "fontColor",
+          "label": "Primary Font Color",
+          "type": "FONT_COLOR",
+          "defaultValue": "#6b6b6b"
+        },
+        {
+          "id": "debug",
+          "label": "Debug Mode",
+          "type": "CHECKBOX",
+          "defaultValue": false
+        },
+        {
+          "id": "alignment",
+          "label": "Alignment",
+          "type": "SELECT_SINGLE",
+          "defaultValue": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

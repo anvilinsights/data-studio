@@ -1,0 +1,41 @@
+{
+  "dsccViz": {
+    "gcsDevBucket": "gs://anvil-ds-card",
+    "gcsProdBucket": "gs://anvil-ds-card",
+    "jsFile": "main.js",
+    "jsonFile": "index.json",
+    "cssFile": "index.css",
+    "print": "printMessage.js"
+  },
+  "scripts": {
+    "build:dev": "NODE_ENV=production webpack",
+    "build:prod": "NODE_ENV=production webpack",
+    "push:dev": "dscc-scripts viz push -d dev",
+    "push:prod": "dscc-scripts viz push -d prod",
+    "update_message": "dscc-scripts viz update_message -f object",
+    "start": "dscc-scripts viz start",
+    "deploy:dev": "yarn build:dev && yarn push:dev",
+    "deploy:prod": "yarn build:prod && yarn push:prod"
+  },
+  "devDependencies": {
+    "@google/dscc": "^0.3.8",
+    "@google/dscc-scripts": "^1.0.6",
+    "awesome-typescript-loader": "^5.2.1",
+    "csstype": "^2.6.6",
+    "source-map-loader": "^0.2.4",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.1",
+    "webpack-cli": "^3.3.4"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.15",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "emotion": "^10.0.9",
+    "emotion-theming": "^10.0.19",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
