@@ -60,10 +60,6 @@ export const message = {
     impressionsLabel: {
       value: 'Impressions',
     },
-    significanceThreshold: {
-      value: '0.05',
-      defaultValue: '0.05',
-    },
     alertBackgroundColor: {
       value: { color: '#23064D', opacity: 1 },
     },

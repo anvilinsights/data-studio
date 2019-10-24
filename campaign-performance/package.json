@@ -1,15 +1,15 @@
 {
   "dsccViz": {
     "gcsDevBucket": "gs://anvil-data-studio-campaign-performance",
-    "gcsProdBucket": "gs://anvil-data-studio-campaign-performance-prod",
+    "gcsProdBucket": "gs://anvil-data-studio-stats-analyzer",
     "jsFile": "index.js",
     "jsonFile": "index.json",
     "cssFile": "index.css",
     "print": "printMessage.js"
   },
   "scripts": {
-    "build:dev": "NODE_ENV=production webpack",
-    "build:prod": "NODE_ENV=production webpack",
+    "build:dev": "node scripts/build.js dev",
+    "build:prod": "node scripts/build.js prod",
     "push:dev": "dscc-scripts viz push -d dev",
     "push:prod": "dscc-scripts viz push -d prod",
     "update_message": "dscc-scripts viz update_message -f object",
