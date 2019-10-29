@@ -1,7 +1,7 @@
 {
   "name": "Data Card",
-  "organization": "Anvil Insights",
-  "description": "Ad Review Table",
+  "organization": "Anvil Analytics + Insights",
+  "description": "Display an individual metric against against a target",
   "logoUrl": "https://logo",
   "organizationUrl": "https://anvilinsights.com",
   "supportUrl": "https://url",
@@ -12,7 +12,7 @@
     {
       "name": "Data Card",
       "id": "card",
-      "description": "",
+      "description": "Display an individual metric against against a target",
       "iconUrl": "https://url",
       "resource": {
         "js": "YOUR_GCS_BUCKET/index.js",

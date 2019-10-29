@@ -6,7 +6,8 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "allowJs": true
   },
   "include": ["./src/**/*"]
 }
