@@ -22,7 +22,7 @@ const MainComponent = props => {
   const pValStyle = css`
     float: left;
     width: 800px;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
   `
 
   return (
