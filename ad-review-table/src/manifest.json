@@ -1,23 +1,24 @@
 {
-  "name": "My Visualizations",
-  "organization": "Anvil Insights",
-  "description": "My first visualization package.",
+  "name": "Ad Review Table",
+  "organization": "Anvil Analytics + Insights",
+  "description": "A table for Google Ads data",
   "logoUrl": "https://logo",
   "organizationUrl": "http://anvilinsights.com",
   "supportUrl": "https://url",
   "privacyPolicyUrl": "https://url",
   "termsOfServiceUrl": "https://url",
   "packageUrl": "https://url",
-  "devMode": "true",
+  "devMode": "DEVMODE_BOOL",
   "components": [
     {
-      "name": "adReviewTable",
-      "description": "",
+      "name": "Ad Review Table",
+      "id": "ads",
+      "description": "A table for Google Ads data",
       "iconUrl": "https://url",
       "resource": {
-        "js": "gs://anvil-data-studio/index.js",
-        "config": "gs://anvil-data-studio/index.json",
-        "css": "gs://anvil-data-studio/index.css"
+        "js": "YOUR_GCS_BUCKET/index.js",
+        "config": "YOUR_GCS_BUCKET/index.json",
+        "css": "YOUR_GCS_BUCKET/index.css"
       }
     }
   ]
