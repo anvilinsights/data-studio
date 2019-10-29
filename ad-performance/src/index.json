@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "adPerformance",
+      "label": "Ad Performance",
+      "elements": [
+        {
+          "id": "dimID",
+          "label": "Dimensions",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 12
+          }
+        },
+        {
+          "id": "metricID",
+          "label": "Metrics",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 4
+          }
+        }
+      ]
+    }
+  ],
+  "style": [
+    {
+      "id": "config",
+      "label": "Config",
+      "elements": [
+        {
+          "id": "title",
+          "label": "Title",
+          "type": "TEXTINPUT",
+          "defaultValue": "Campaign Performance"
+        },
+        {
+          "id": "significanceThreshold",
+          "label": "Significance Threshold",
+          "type": "TEXTINPUT",
+          "defaultValue": "0.05"
+        }
+      ]
+    }
+  ]
+}
