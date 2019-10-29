@@ -1,0 +1,24 @@
+{
+  "name": "Ad Performance",
+  "organization": "Anvil Insights",
+  "description": "",
+  "logoUrl": "",
+  "organizationUrl": "https://anvilinsights.com",
+  "supportUrl": "https://url",
+  "privacyPolicyUrl": "",
+  "termsOfServiceUrl": "",
+  "packageUrl": "",
+  "devMode": true,
+  "components": [
+    {
+      "name": "adPerformance",
+      "description": "",
+      "iconUrl": "",
+      "resource": {
+        "js": "gs://anvil-data-studio-ad-performance-dev/index.js",
+        "config": "gs://anvil-data-studio-ad-performance-dev/index.json",
+        "css": "gs://anvil-data-studio-ad-performance-dev/index.css"
+      }
+    }
+  ]
+}

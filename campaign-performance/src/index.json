@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "id": "statsAnalyzer",
+      "label": "Stats Analyzer",
+      "elements": [
+        {
+          "id": "dimID",
+          "label": "Dimensions",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "id": "metricID",
+          "label": "Metrics",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 2
+          }
+        }
+      ]
+    }
+  ],
+  "style": [
+    {
+      "id": "config",
+      "label": "Config",
+      "elements": [
+        {
+          "id": "title",
+          "label": "Title",
+          "type": "TEXTINPUT",
+          "defaultValue": "Stats Analyzer"
+        },
+        {
+          "id": "subtitle",
+          "label": "Subtitle",
+          "type": "TEXTINPUT"
+        },
+        {
+          "id": "widgetBackgroundColor",
+          "label": "Widget Background Color",
+          "type": "FILL_COLOR"
+        },
+        {
+          "id": "alertBackgroundColor",
+          "label": "Alert Background Color",
+          "type": "FILL_COLOR"
+        },
+        {
+          "id": "alertFontColor",
+          "label": "Alert Font Color",
+          "type": "FONT_COLOR"
+        },
+        {
+          "id": "tableFontColor",
+          "label": "Table Font Color",
+          "type": "FONT_COLOR"
+        },
+        {
+          "id": "baseMetric",
+          "label": "Base Metric",
+          "type": "TEXTINPUT"
+        },
+        {
+          "id": "baseMetricPastTense",
+          "label": "Base Metric (Past Tense)",
+          "type": "TEXTINPUT"
+        },
+        {
+          "id": "impressionsLabel",
+          "label": "All Events Label (Impressions, etc.)",
+          "type": "TEXTINPUT"
+        }
+      ]
+    }
+  ]
+}
