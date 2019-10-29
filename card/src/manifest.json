@@ -3,21 +3,21 @@
   "organization": "Anvil Insights",
   "description": "Ad Review Table",
   "logoUrl": "https://logo",
-  "organizationUrl": "http://anvilinsights.com",
+  "organizationUrl": "https://anvilinsights.com",
   "supportUrl": "https://url",
   "privacyPolicyUrl": "https://url",
-  "termsOfServiceUrl": "https://url",
   "packageUrl": "https://url",
-  "devMode": true,
+  "devMode": "DEVMODE_BOOL",
   "components": [
     {
       "name": "Data Card",
+      "id": "card",
       "description": "",
       "iconUrl": "https://url",
       "resource": {
-        "js": "gs://anvil-ds-card/index.js",
-        "config": "gs://anvil-ds-card/index.json",
-        "css": "gs://anvil-ds-card/index.css"
+        "js": "YOUR_GCS_BUCKET/index.js",
+        "config": "YOUR_GCS_BUCKET/index.json",
+        "css": "YOUR_GCS_BUCKET/index.css"
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
   "dsccViz": {
-    "gcsDevBucket": "gs://anvil-ds-card",
+    "gcsDevBucket": "gs://anvil-ds-card-dev",
     "gcsProdBucket": "gs://anvil-ds-card",
     "jsFile": "main.js",
     "jsonFile": "index.json",
@@ -8,8 +8,8 @@
     "print": "printMessage.js"
   },
   "scripts": {
-    "build:dev": "NODE_ENV=production webpack",
-    "build:prod": "NODE_ENV=production webpack",
+    "build:dev": "node scripts/build.js dev",
+    "build:prod": "node scripts/build.js prod",
     "push:dev": "dscc-scripts viz push -d dev",
     "push:prod": "dscc-scripts viz push -d prod",
     "update_message": "dscc-scripts viz update_message -f object",
