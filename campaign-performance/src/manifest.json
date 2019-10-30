@@ -4,7 +4,7 @@
   "description": "Utility for comparing a set of results to their expected values",
   "logoUrl": "",
   "organizationUrl": "https://anvilinsights.com",
-  "supportUrl": "https://url",
+  "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://datastudio.google.com/u/0/reporting/1rvkuCS60hY1iZb9gYX6f3BIjXFlbMX6k/page/zr52",
   "devMode": "DEVMODE_BOOL",
   "components": [

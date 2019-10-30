@@ -4,8 +4,7 @@
   "description": "Display an individual metric against against a target",
   "logoUrl": "https://logo",
   "organizationUrl": "https://anvilinsights.com",
-  "supportUrl": "https://url",
-  "privacyPolicyUrl": "https://url",
+  "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://url",
   "devMode": "DEVMODE_BOOL",
   "components": [
