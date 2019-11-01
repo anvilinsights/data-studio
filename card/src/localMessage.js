@@ -46,6 +46,9 @@ export const message = {
     },
     isCurrency: {
       value: true
+    },
+    isPlural: {
+      value: false
     }
   },
   fields: {

@@ -42,7 +42,7 @@
         },
         {
           "id": "isCurrency",
-          "label": "Use Currency Sumbol",
+          "label": "Use Currency Symbol (Value format only)",
           "type": "CHECKBOX",
           "defaultValue": false
         },
@@ -51,6 +51,12 @@
           "label": "Currency Symbol",
           "type": "TEXTINPUT",
           "defaultValue": "$"
+        },
+        {
+          "id": "isPlural",
+          "label": "Data Measure is Plural",
+          "type": "CHECKBOX",
+          "defaultValue": true
         },
         {
           "id": "format",

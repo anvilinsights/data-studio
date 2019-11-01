@@ -58,6 +58,7 @@ export interface StyleData {
   debug: StyleObject<boolean>;
   isCurrency: StyleObject<boolean>;
   currencySymbol: StyleObject;
+  isPlural: StyleObject<boolean>;
 }
 
 export interface Colors {

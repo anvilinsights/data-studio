@@ -34,13 +34,15 @@ interface Props {
   target: number;
   actual: number;
   measure: string | null;
+  isPlural: boolean;
 }
 
 export const PercentComponent: React.SFC<Props> = ({
   colors,
   target,
   actual,
-  measure
+  measure,
+  isPlural
 }) => {
   const [sign, percent] = formatNumber(target, actual);
 
@@ -52,12 +54,14 @@ export const PercentComponent: React.SFC<Props> = ({
     signText = 'below';
   }
 
+  const pluralText = isPlural ? 'are' : 'is';
+
   let text = null;
 
   if (measure) {
     text = (
       <PercentageSubtitle>
-        ({measure} is {percent}{' '}
+        ({measure} {pluralText} {percent}{' '}
         <StyledText color={color} weight={500}>
           {signText}
         </StyledText>{' '}

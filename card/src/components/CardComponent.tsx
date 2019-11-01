@@ -69,6 +69,7 @@ export const CardComponent: React.SFC<Props> = props => {
   const format = extractValue(props.style, 'format');
   const alignment = extractValue(props.style, 'alignment') as Alignment;
   const isCurrency = extractValue(props.style, 'isCurrency');
+  const isPlural = extractValue(props.style, 'isPlural');
   const currencySymbol = extractValue(props.style, 'currencySymbol');
 
   const measureLabel = measure || props.fieldName;
@@ -102,6 +103,7 @@ export const CardComponent: React.SFC<Props> = props => {
         target={props.target}
         actual={props.actual}
         measure={measureLabel}
+        isPlural={isPlural}
       />
     );
   }
