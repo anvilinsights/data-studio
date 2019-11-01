@@ -1,5 +1,5 @@
 {
-  "name": "Data Card",
+  "name": "Data Target Card",
   "organization": "Anvil Analytics + Insights",
   "description": "Display an individual metric against against a target",
   "logoUrl": "https://logo",
@@ -9,8 +9,8 @@
   "devMode": "DEVMODE_BOOL",
   "components": [
     {
-      "name": "Data Card",
-      "id": "card",
+      "name": "Data Target Card",
+      "id": "target",
       "description": "Display an individual metric against against a target",
       "iconUrl": "https://url",
       "resource": {

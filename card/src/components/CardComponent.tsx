@@ -56,6 +56,7 @@ interface Props {
   style: StyleData;
   target: number;
   actual: number;
+  fieldName: string;
 }
 
 export const CardComponent: React.SFC<Props> = props => {
@@ -67,6 +68,8 @@ export const CardComponent: React.SFC<Props> = props => {
   const measure = extractValue(props.style, 'measure');
   const format = extractValue(props.style, 'format');
   const alignment = extractValue(props.style, 'alignment') as Alignment;
+
+  const measureLabel = measure || props.fieldName;
 
   const colors: Colors = {
     primary: fontColor,
@@ -84,7 +87,7 @@ export const CardComponent: React.SFC<Props> = props => {
       colors={colors}
       target={props.target}
       actual={props.actual}
-      measure={measure}
+      measure={measureLabel}
     />
   );
 
@@ -94,7 +97,7 @@ export const CardComponent: React.SFC<Props> = props => {
         colors={colors}
         target={props.target}
         actual={props.actual}
-        measure={measure}
+        measure={measureLabel}
       />
     );
   }

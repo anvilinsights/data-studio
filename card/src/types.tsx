@@ -34,6 +34,17 @@ export interface DSData {
     }>;
   };
   style: StyleData;
+  fields: {
+    target: Array<FieldData>;
+    actual: Array<FieldData>;
+  }
+}
+
+export interface FieldData {
+  id: string;
+  name: string;
+  type: string;
+  concept: string;
 }
 
 export interface StyleData {

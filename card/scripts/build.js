@@ -3,41 +3,42 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require('mz/fs');
 const path = require('path');
 const webpack = require('webpack');
+const webpackOptions = require('../webpack.config');
 
 const buildOptions = buildValues => {
   // common options
-  const webpackOptions = {
-    entry: {
-      // this is the viz source code
-      main: path.resolve('./src', 'index.js')
-    },
-    module: {
-      rules: [
-        {
-          exclude: /node_modules/
-        }
-      ]
-    },
-    resolve: {
-      extensions: ['.js']
-    },
-    output: {
-      filename: 'index.js',
-      path: path.resolve('./build')
-    },
-    plugins: [
-      new CopyWebpackPlugin([
-        {
-          from: path.resolve('./src', 'index.json'),
-          to: '.'
-        },
-        {
-          from: path.resolve('./src', 'index.css'),
-          to: '.'
-        }
-      ])
-    ]
-  };
+  // const webpackOptions = {
+  //   entry: {
+  //     // this is the viz source code
+  //     main: path.resolve('./src', 'index.js')
+  //   },
+  //   module: {
+  //     rules: [
+  //       {
+  //         exclude: /node_modules/
+  //       }
+  //     ]
+  //   },
+  //   resolve: {
+  //     extensions: ['.js']
+  //   },
+  //   output: {
+  //     filename: 'index.js',
+  //     path: path.resolve('./build')
+  //   },
+  //   plugins: [
+  //     new CopyWebpackPlugin([
+  //       {
+  //         from: path.resolve('./src', 'index.json'),
+  //         to: '.'
+  //       },
+  //       {
+  //         from: path.resolve('./src', 'index.css'),
+  //         to: '.'
+  //       }
+  //     ])
+  //   ]
+  // };
 
   if (buildValues.devMode) {
     const devOptions = {
