@@ -16,18 +16,36 @@ interface Props {
   target: number;
   actual: number;
   measure: string | null;
+  isCurrency: boolean;
+  currencySymbol: string;
 }
 
-const money = (val: number | string): string => {
-  return typeof val === 'number'
-    ? `$${val.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
-    : val;
+const money = (
+  val: number | string,
+  isCurrency: boolean,
+  currencySymbol: string
+): string => {
+  const symbolPrefix = isCurrency ? currencySymbol : '';
+
+  // If the value is not numeric or money, return it raw
+  if (typeof val !== 'number') {
+    return val;
+  } else if (!isCurrency) {
+    return `${val.toFixed(0)}`;
+  } else {
+    // Format and add currency symbol
+    return `${symbolPrefix}${val
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+  }
 };
 export const RatioComponent: React.SFC<Props> = ({
   colors,
   target,
   actual,
-  measure
+  measure,
+  isCurrency,
+  currencySymbol
 }) => {
   const numeratorColor = target > actual ? colors.negative : colors.positive;
 
@@ -37,7 +55,7 @@ export const RatioComponent: React.SFC<Props> = ({
         <FractionPart>
           <Numerator>
             <FractionNumber color={numeratorColor}>
-              {money(actual)}
+              {money(actual, isCurrency, currencySymbol)}
             </FractionNumber>
             <FractionLabel>{measure}</FractionLabel>
           </Numerator>
@@ -49,7 +67,9 @@ export const RatioComponent: React.SFC<Props> = ({
 
         <FractionPart>
           <Divisor>
-            <FractionNumber>{money(target)}</FractionNumber>
+            <FractionNumber>
+              {money(target, isCurrency, currencySymbol)}
+            </FractionNumber>
             <FractionLabel>Target {measure}</FractionLabel>
           </Divisor>
         </FractionPart>

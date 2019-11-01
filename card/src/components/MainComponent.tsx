@@ -14,7 +14,7 @@ const MainComponent: React.SFC<Props> = props => {
   }
 
   const { tables, style, fields } = props;
-  const { actual: metricField } = fields
+  const { actual: metricField } = fields;
 
   // ensure tables.DEFAULT is an array
   if (!Array.isArray(tables.DEFAULT)) {
@@ -77,7 +77,12 @@ const MainComponent: React.SFC<Props> = props => {
 
   return (
     <Container>
-      <CardComponent target={target[0]} actual={actual[0]} style={style} fieldName={metricField[0].name} />
+      <CardComponent
+        target={target[0]}
+        actual={actual[0]}
+        style={style}
+        fieldName={metricField[0].name}
+      />
     </Container>
   );
 };

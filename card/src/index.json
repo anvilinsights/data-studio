@@ -41,6 +41,18 @@
           "type": "TEXTINPUT"
         },
         {
+          "id": "isCurrency",
+          "label": "Use Currency Sumbol",
+          "type": "CHECKBOX",
+          "defaultValue": false
+        },
+        {
+          "id": "currencySymbol",
+          "label": "Currency Symbol",
+          "type": "TEXTINPUT",
+          "defaultValue": "$"
+        },
+        {
           "id": "format",
           "label": "Data Format",
           "defaultValue": "percentage",

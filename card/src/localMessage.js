@@ -40,21 +40,31 @@ export const message = {
     },
     debug: {
       value: true
+    },
+    currencySymbol: {
+      defaultValue: '$'
+    },
+    isCurrency: {
+      value: true
     }
   },
   fields: {
-    actual: {
-      id: 'qt_asdifjdskjf',
-      name: 'actual',
-      type: 'NUMBER',
-      concept: 'DIMENSION'
-    },
-    target: {
-      id: 'qt_sdfjkngjn',
-      name: 'target',
-      type: 'NUMBER',
-      concept: 'DIMENSION'
-    }
+    actual: [
+      {
+        id: 'qt_asdifjdskjf',
+        name: 'actual',
+        type: 'NUMBER',
+        concept: 'DIMENSION'
+      }
+    ],
+    target: [
+      {
+        id: 'qt_sdfjkngjn',
+        name: 'target',
+        type: 'NUMBER',
+        concept: 'DIMENSION'
+      }
+    ]
   },
   interactions: {}
 };
