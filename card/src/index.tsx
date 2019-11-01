@@ -135,8 +135,8 @@ class AppComponent extends React.Component<{}, State> {
     // Internally Google data studio uses post Message to send data to the web app. When the first render
     // occurs we may have the data yet, if that is the case just render null.
     if (stateGuard(this.state)) {
-      const { tables, style } = this.state;
-      component = <MainComponent tables={tables} style={style} />;
+      const { tables, style, fields } = this.state;
+      component = <MainComponent tables={tables} style={style} fields={fields} />;
     }
 
     return (
@@ -149,7 +149,7 @@ class AppComponent extends React.Component<{}, State> {
 }
 
 const stateGuard = (state: Partial<State>): state is State => {
-  return !!(state && state.style && state.tables);
+  return !!(state && state.style && state.tables && state.fields);
 };
 
 setup();

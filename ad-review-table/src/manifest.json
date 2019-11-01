@@ -4,9 +4,7 @@
   "description": "A table for Google Ads data",
   "logoUrl": "https://logo",
   "organizationUrl": "http://anvilinsights.com",
-  "supportUrl": "https://url",
-  "privacyPolicyUrl": "https://url",
-  "termsOfServiceUrl": "https://url",
+  "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://url",
   "devMode": "DEVMODE_BOOL",
   "components": [

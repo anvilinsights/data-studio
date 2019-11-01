@@ -15,7 +15,7 @@ export const Container = styled.div({
   width: 'auto',
   padding: 20,
   flexBasis: '100%',
-  display: 'flex'
+  display: 'flex',
 });
 
 export const Card = styled.div<CardColors>(

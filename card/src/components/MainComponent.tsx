@@ -7,18 +7,19 @@ import { Container } from './Styled';
 interface Props extends DSData {}
 
 const MainComponent: React.SFC<Props> = props => {
-  if (!props.tables || !props.style) {
+  if (!props.tables || !props.style || !props.fields) {
     // tslint:disable-next-line:no-console
-    console.error('tables or style are null/undefined/false');
+    console.error('tables/style/fields are null/undefined/false');
     return null;
   }
 
-  const { tables, style } = props;
+  const { tables, style, fields } = props;
+  const { actual: metricField } = fields
 
   // ensure tables.DEFAULT is an array
   if (!Array.isArray(tables.DEFAULT)) {
     // tslint:disable-next-line:no-console
-    console.error('tables.DEFUALT is not an array');
+    console.error('tables.DEFAULT is not an array');
     return null;
   }
 
@@ -76,7 +77,7 @@ const MainComponent: React.SFC<Props> = props => {
 
   return (
     <Container>
-      <CardComponent target={target[0]} actual={actual[0]} style={style} />
+      <CardComponent target={target[0]} actual={actual[0]} style={style} fieldName={metricField[0].name} />
     </Container>
   );
 };

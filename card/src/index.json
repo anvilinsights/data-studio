@@ -33,14 +33,12 @@
         {
           "id": "title",
           "label": "Title",
-          "type": "TEXTINPUT",
-          "defaultValue": "Total Revenue - Compared to Target"
+          "type": "TEXTINPUT"
         },
         {
           "id": "measure",
           "label": "Data Measure",
-          "type": "TEXTINPUT",
-          "defaultValue": "Revenue"
+          "type": "TEXTINPUT"
         },
         {
           "id": "format",
