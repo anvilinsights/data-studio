@@ -33,14 +33,14 @@ const extractColor = (
   return null;
 };
 
-const extractValue = (
-  style: StyleData,
-  key: keyof StyleData
-): string | null => {
+const extractValue = (style: StyleData, key: keyof StyleData): any | null => {
   if (style[key] && style[key].value) {
     const value = style[key].value;
 
     if (typeof value === 'string') {
+      return value;
+    }
+    if (typeof value === 'boolean') {
       return value;
     }
 
@@ -68,6 +68,9 @@ export const CardComponent: React.SFC<Props> = props => {
   const measure = extractValue(props.style, 'measure');
   const format = extractValue(props.style, 'format');
   const alignment = extractValue(props.style, 'alignment') as Alignment;
+  const isCurrency = extractValue(props.style, 'isCurrency');
+  const isPlural = extractValue(props.style, 'isPlural');
+  const currencySymbol = extractValue(props.style, 'currencySymbol');
 
   const measureLabel = measure || props.fieldName;
 
@@ -88,6 +91,8 @@ export const CardComponent: React.SFC<Props> = props => {
       target={props.target}
       actual={props.actual}
       measure={measureLabel}
+      isCurrency={isCurrency}
+      currencySymbol={currencySymbol}
     />
   );
 
@@ -98,6 +103,7 @@ export const CardComponent: React.SFC<Props> = props => {
         target={props.target}
         actual={props.actual}
         measure={measureLabel}
+        isPlural={isPlural}
       />
     );
   }

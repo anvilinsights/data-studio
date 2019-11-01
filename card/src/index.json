@@ -41,6 +41,24 @@
           "type": "TEXTINPUT"
         },
         {
+          "id": "isCurrency",
+          "label": "Use Currency Symbol (Value format only)",
+          "type": "CHECKBOX",
+          "defaultValue": false
+        },
+        {
+          "id": "currencySymbol",
+          "label": "Currency Symbol",
+          "type": "TEXTINPUT",
+          "defaultValue": "$"
+        },
+        {
+          "id": "isPlural",
+          "label": "Data Measure is Plural",
+          "type": "CHECKBOX",
+          "defaultValue": true
+        },
+        {
           "id": "format",
           "label": "Data Format",
           "defaultValue": "percentage",

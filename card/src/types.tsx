@@ -37,7 +37,7 @@ export interface DSData {
   fields: {
     target: Array<FieldData>;
     actual: Array<FieldData>;
-  }
+  };
 }
 
 export interface FieldData {
@@ -56,6 +56,9 @@ export interface StyleData {
   negativeColor: StyleObject<string, ColorObject>;
   fontColor: StyleObject<string, ColorObject>;
   debug: StyleObject<boolean>;
+  isCurrency: StyleObject<boolean>;
+  currencySymbol: StyleObject;
+  isPlural: StyleObject<boolean>;
 }
 
 export interface Colors {
