@@ -1,6 +1,6 @@
 # Data Studio Community Visualizations
 
-## Visualizations
+## Visualizations in this Repo
 | Name | Folder |  Requires Custom Query |
 | --- | --- | --- |
 | Data Target Card | `/card` | No |
