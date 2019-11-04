@@ -2,7 +2,7 @@
   "name": "Data Target Card",
   "organization": "Anvil Analytics + Insights",
   "description": "Display an individual metric against against a target",
-  "logoUrl": "https://logo",
+  "logoUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/card/src/DataCard_Icon.png",
   "organizationUrl": "https://anvilinsights.com",
   "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://datastudio.google.com/u/1/reporting/1ygQd8FwYnDrvmjfkh5ogXNt7mj5JsgBH/page/1O54",
@@ -12,7 +12,7 @@
       "name": "Data Target Card",
       "id": "target",
       "description": "Display an individual metric against against a target",
-      "iconUrl": "https://url",
+      "iconUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/card/src/DataCard_Icon.png",
       "resource": {
         "js": "YOUR_GCS_BUCKET/index.js",
         "config": "YOUR_GCS_BUCKET/index.json",
