@@ -38,6 +38,7 @@ export interface DSData {
     target: Array<FieldData>;
     actual: Array<FieldData>;
   };
+  theme: object;
 }
 
 export interface FieldData {

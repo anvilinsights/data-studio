@@ -69,5 +69,11 @@ export const message = {
       }
     ]
   },
-  interactions: {}
+  interactions: {},
+  theme: {
+    themeFontColor: {
+      color: '#616161'
+    },
+    themeFontFamily: 'Roboto'
+  }
 };

@@ -18,6 +18,7 @@ interface Props {
   measure: string | null;
   isCurrency: boolean;
   currencySymbol: string;
+  fontFamily: string;
 }
 
 const money = (
@@ -45,9 +46,12 @@ export const RatioComponent: React.SFC<Props> = ({
   actual,
   measure,
   isCurrency,
-  currencySymbol
+  currencySymbol,
+  fontFamily
 }) => {
   const numeratorColor = target > actual ? colors.negative : colors.positive;
+
+  console.log('fontFamily', fontFamily);
 
   return (
     <div>
@@ -57,7 +61,7 @@ export const RatioComponent: React.SFC<Props> = ({
             <FractionNumber color={numeratorColor}>
               {money(actual, isCurrency, currencySymbol)}
             </FractionNumber>
-            <FractionLabel>{measure}</FractionLabel>
+            <FractionLabel fontFamily={fontFamily}>{measure}</FractionLabel>
           </Numerator>
         </FractionPart>
 
@@ -70,7 +74,9 @@ export const RatioComponent: React.SFC<Props> = ({
             <FractionNumber>
               {money(target, isCurrency, currencySymbol)}
             </FractionNumber>
-            <FractionLabel>Target {measure}</FractionLabel>
+            <FractionLabel fontFamily={fontFamily}>
+              Target {measure}
+            </FractionLabel>
           </Divisor>
         </FractionPart>
       </Fraction>

@@ -87,12 +87,6 @@
           "defaultValue": "#00838F"
         },
         {
-          "id": "fontColor",
-          "label": "Primary Font Color",
-          "type": "FONT_COLOR",
-          "defaultValue": "#6b6b6b"
-        },
-        {
           "id": "debug",
           "label": "Debug Mode",
           "type": "CHECKBOX",

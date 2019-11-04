@@ -15,7 +15,7 @@ export const Container = styled.div({
   width: 'auto',
   padding: 20,
   flexBasis: '100%',
-  display: 'flex',
+  display: 'flex'
 });
 
 export const Card = styled.div<CardColors>(
@@ -51,6 +51,7 @@ export const Card = styled.div<CardColors>(
 
 interface TextColor {
   textColor: string;
+  fontFamily?: string | null;
 }
 
 export const Percentage = styled.div<TextColor>(
@@ -79,21 +80,32 @@ export const PercentageText = styled.div({
   fontWeight: 'bold'
 });
 
-export const PercentageSubtitle = styled.div({
-  fontSize: '4vw',
-  fontStyle: 'italic',
-  fontWeight: 300
-});
+export const PercentageSubtitle = styled.div<PercentageSubtitleProps>(
+  {
+    fontSize: '4vw',
+    fontStyle: 'italic',
+    fontWeight: 300
+  },
+  ({ fontFamily }) => ({ fontFamily })
+);
 
 export interface StyledTextProps {
-  color: string | null;
+  color?: string | null;
   weight?: FontWeightProperty | null;
+  fontFamily?: string | null;
 }
 
-export const StyledText = styled.span<StyledTextProps>(({ color, weight }) => ({
-  color,
-  fontWeight: weight
-}));
+export interface PercentageSubtitleProps {
+  fontFamily?: string | null;
+}
+
+export const StyledText = styled.span<StyledTextProps>(
+  ({ color, weight, fontFamily }) => ({
+    color,
+    fontWeight: weight,
+    fontFamily
+  })
+);
 
 export const Title = styled.div<{}>(
   {
@@ -129,7 +141,7 @@ export const Fraction = styled.div<TextColor>(
     minHeight: '50vh',
     position: 'relative'
   },
-  ({ textColor }) => ({ color: textColor })
+  ({ textColor, fontFamily }) => ({ color: textColor, fontFamily })
 );
 
 export const FractionPart = styled.div({
@@ -159,9 +171,12 @@ export const FractionNumber = styled.div<OptionalColor>(
   ({ color }) => ({ color })
 );
 
-export const FractionLabel = styled.div({
-  fontWeight: 300
-});
+export const FractionLabel = styled.div<StyledTextProps>(
+  {
+    fontWeight: 300
+  },
+  ({ fontFamily }) => ({ fontFamily })
+);
 
 export const FractionBar = styled.div({
   position: 'absolute',
