@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Alignment, ColorObject, Colors, StyleData, Theme } from './../types';
 import { PercentComponent } from './PercentComponent';
 import { RatioComponent } from './RatioComponent';
-import { Card, Title } from './Styled';
+import { Card, Title, StyledText } from './Styled';
 
 const isColorObject = (obj: any): obj is ColorObject => {
   return obj && obj.color;
@@ -57,10 +57,13 @@ interface Props {
   target: number;
   actual: number;
   fieldName: string;
+  theme: any;
 }
 
 export const CardComponent: React.SFC<Props> = props => {
-  const fontColor = extractColor(props.style, 'fontColor');
+  const fontColor = props.theme.themeFontColor.color;
+  const fontFamily = props.theme.themeFontFamily;
+
   const negativeColor = extractColor(props.style, 'negativeColor');
   const positiveColor = extractColor(props.style, 'positiveColor');
 
@@ -93,6 +96,7 @@ export const CardComponent: React.SFC<Props> = props => {
       measure={measureLabel}
       isCurrency={isCurrency}
       currencySymbol={currencySymbol}
+      fontFamily={fontFamily}
     />
   );
 
@@ -104,6 +108,7 @@ export const CardComponent: React.SFC<Props> = props => {
         actual={props.actual}
         measure={measureLabel}
         isPlural={isPlural}
+        fontFamily={fontFamily}
       />
     );
   }
@@ -115,7 +120,11 @@ export const CardComponent: React.SFC<Props> = props => {
   return (
     <ThemeProvider theme={theme}>
       <Card colors={baseColors}>
-        {title ? <Title>{title}</Title> : null}
+        {title ? (
+          <Title>
+            <StyledText fontFamily={fontFamily}>{title}</StyledText>
+          </Title>
+        ) : null}
         {figure}
       </Card>
     </ThemeProvider>

@@ -13,7 +13,7 @@ const MainComponent: React.SFC<Props> = props => {
     return null;
   }
 
-  const { tables, style, fields } = props;
+  const { tables, style, fields, theme } = props;
   const { actual: metricField } = fields;
 
   // ensure tables.DEFAULT is an array
@@ -82,6 +82,7 @@ const MainComponent: React.SFC<Props> = props => {
         actual={actual[0]}
         style={style}
         fieldName={metricField[0].name}
+        theme={theme}
       />
     </Container>
   );

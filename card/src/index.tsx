@@ -135,8 +135,15 @@ class AppComponent extends React.Component<{}, State> {
     // Internally Google data studio uses post Message to send data to the web app. When the first render
     // occurs we may have the data yet, if that is the case just render null.
     if (stateGuard(this.state)) {
-      const { tables, style, fields } = this.state;
-      component = <MainComponent tables={tables} style={style} fields={fields} />;
+      const { tables, style, fields, theme } = this.state;
+      component = (
+        <MainComponent
+          tables={tables}
+          style={style}
+          fields={fields}
+          theme={theme}
+        />
+      );
     }
 
     return (
