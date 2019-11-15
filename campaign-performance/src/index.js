@@ -66,8 +66,8 @@ class AppComponent extends React.Component {
       'expectedPercentage',
     ])
 
-    console.log('grandTotal', frame.stat.sum('impressions'))
-    console.log('click column total', frame.stat.sum('clicks'))
+    // console.log('grandTotal', frame.stat.sum('impressions'))
+    // console.log('click column total', frame.stat.sum('clicks'))
 
     const dataFrame = frame
       .map(row => {
@@ -92,7 +92,7 @@ class AppComponent extends React.Component {
       @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
       * {
-        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        font-family: Helvetica, Arial, sans-serif;
       }
     `
     return (
