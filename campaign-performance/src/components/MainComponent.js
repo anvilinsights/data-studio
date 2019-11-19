@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import Campaigns from './Campaigns'
 import Title from './Title'
 import SignificanceAlert from './SignificanceAlert'
