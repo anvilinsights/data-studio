@@ -8,8 +8,8 @@
     "print": "printMessage.js"
   },
   "scripts": {
-    "build:dev": "node scripts/build.js dev",
-    "build:prod": "node scripts/build.js prod",
+    "build:dev": "NODE_ENV=production node scripts/build.js dev",
+    "build:prod": "NODE_ENV=production node scripts/build.js prod",
     "push:dev": "dscc-scripts viz push -d dev",
     "push:prod": "dscc-scripts viz push -d prod",
     "update_message": "dscc-scripts viz update_message -f object",

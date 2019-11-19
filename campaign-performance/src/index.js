@@ -66,8 +66,8 @@ class AppComponent extends React.Component {
       'expectedPercentage',
     ])
 
-    console.log('grandTotal', frame.stat.sum('impressions'))
-    console.log('click column total', frame.stat.sum('clicks'))
+    // console.log('grandTotal', frame.stat.sum('impressions'))
+    // console.log('click column total', frame.stat.sum('clicks'))
 
     const dataFrame = frame
       .map(row => {
@@ -84,15 +84,15 @@ class AppComponent extends React.Component {
     const pStats = dataFrame.select('clicks', 'expected').toDict()
     const pValue = stats.pValue(pStats.clicks, pStats.expected, 1)
 
-    this.setState({ ...data, dataFrame, pValue })
+    const bodyWidth = document.body.clientWidth
+
+    this.setState({ ...data, dataFrame, pValue, bodyWidth })
   }
 
   render() {
     const styles = css`
-      @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
       * {
-        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        font-family: Helvetica, Arial, sans-serif;
       }
     `
     return (

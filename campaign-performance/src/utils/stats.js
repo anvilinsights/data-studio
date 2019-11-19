@@ -15,7 +15,6 @@ module.exports = {
 
   pValue: function(observed, expected, reduction = 1) {
     const { probability } = chiSquaredTest(observed, expected, reduction)
-    console.log('probability', probability)
     return probability
   },
 

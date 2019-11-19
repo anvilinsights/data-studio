@@ -80,4 +80,7 @@ export const message = {
       defaultValue: '#fff',
     },
   },
+  theme: {
+    themeFontFamily: 'Roboto',
+  },
 }
