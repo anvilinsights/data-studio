@@ -91,8 +91,6 @@ class AppComponent extends React.Component {
 
   render() {
     const styles = css`
-      @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
       * {
         font-family: Helvetica, Arial, sans-serif;
       }
