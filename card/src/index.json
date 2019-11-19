@@ -37,7 +37,7 @@
         },
         {
           "id": "measure",
-          "label": "Data Measure",
+          "label": "Field Name Override for Subtitle",
           "type": "TEXTINPUT"
         },
         {
@@ -54,7 +54,7 @@
         },
         {
           "id": "isPlural",
-          "label": "Data Measure is Plural",
+          "label": "Field Name is Plural",
           "type": "CHECKBOX",
           "defaultValue": true
         },
