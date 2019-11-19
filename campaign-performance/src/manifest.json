@@ -6,6 +6,7 @@
   "organizationUrl": "https://anvilinsights.com",
   "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://datastudio.google.com/u/0/reporting/1rvkuCS60hY1iZb9gYX6f3BIjXFlbMX6k/page/zr52",
+  "privacyPolicyUrl": "https://github.com/anvilinsights/data-studio/blob/master/privacy-terms.md",
   "devMode": "DEVMODE_BOOL",
   "components": [
     {
