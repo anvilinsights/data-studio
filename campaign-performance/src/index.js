@@ -84,7 +84,9 @@ class AppComponent extends React.Component {
     const pStats = dataFrame.select('clicks', 'expected').toDict()
     const pValue = stats.pValue(pStats.clicks, pStats.expected, 1)
 
-    this.setState({ ...data, dataFrame, pValue })
+    const bodyWidth = document.body.clientWidth
+
+    this.setState({ ...data, dataFrame, pValue, bodyWidth })
   }
 
   render() {

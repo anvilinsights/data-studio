@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import Campaigns from './Campaigns'
 import Title from './Title'
 import SignificanceAlert from './SignificanceAlert'
 import InfoPopover from './InfoPopover'
+import EnlargementError from './EnlargementError'
 
-const MainComponent = ({ style, fields, pValue, tables }) => {
+const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
   if (!fields || !tables || !tables.DEFAULT) {
     return <div>Loading...</div>
   }
@@ -36,6 +37,10 @@ const MainComponent = ({ style, fields, pValue, tables }) => {
 
   return (
     <div css={widgetStyles}>
+      {bodyWidth < 1110 && (
+        <EnlargementError message="Please resize to show all data" />
+      )}
+
       <SignificanceAlert
         p={pValue}
         background={style.alertBackgroundColor}
