@@ -7,6 +7,7 @@ import MainComponent from './components/MainComponent'
 import Dataframe from 'dataframe-js'
 import { DataProvider } from './utils/DataContext'
 import * as stats from './utils/stats'
+import ErrorMessage from './components/ErrorMessage'
 
 const LOCAL = process.env.NODE_ENV !== 'production'
 // const LOCAL = false
@@ -30,6 +31,7 @@ class AppComponent extends React.Component {
 
     this.state = {
       dataFrame: {},
+      hasError: false,
     }
   }
 
@@ -42,6 +44,10 @@ class AppComponent extends React.Component {
         transform: dscc.objectTransform,
       })
     }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: !!error }
   }
 
   handleDataUpdate(data) {
@@ -86,10 +92,11 @@ class AppComponent extends React.Component {
 
     const bodyWidth = document.body.clientWidth
 
-    this.setState({ ...data, dataFrame, pValue, bodyWidth })
+    this.setState({ ...data, dataFrame, pValue, bodyWidth, hasError: false })
   }
 
   render() {
+    const { hasError, dataFrame } = this.state
     const styles = css`
       * {
         font-family: Helvetica, Arial, sans-serif;
@@ -98,8 +105,12 @@ class AppComponent extends React.Component {
     return (
       <React.Fragment>
         <Global styles={styles} />
-        <DataProvider value={this.state.dataFrame}>
-          <MainComponent {...this.state} />
+        <DataProvider value={dataFrame}>
+          {hasError ? (
+            <ErrorMessage message="Please include one dimension and two metrics" />
+          ) : (
+            <MainComponent {...this.state} />
+          )}
         </DataProvider>
       </React.Fragment>
     )

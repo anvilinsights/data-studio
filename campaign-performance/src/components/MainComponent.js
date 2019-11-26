@@ -5,9 +5,11 @@ import Campaigns from './Campaigns'
 import Title from './Title'
 import SignificanceAlert from './SignificanceAlert'
 import InfoPopover from './InfoPopover'
-import EnlargementError from './EnlargementError'
+import ErrorMessage from './ErrorMessage'
 
 const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
+  console.log('fields', fields)
+  console.log('tables', tables)
   if (!fields || !tables || !tables.DEFAULT) {
     return <div>Loading...</div>
   }
@@ -38,7 +40,7 @@ const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
   return (
     <div css={widgetStyles}>
       {bodyWidth < 1110 && (
-        <EnlargementError message="Please resize to show all data" />
+        <ErrorMessage message="Please resize to show all data" />
       )}
 
       <SignificanceAlert
