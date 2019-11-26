@@ -5,7 +5,7 @@ import Campaigns from './Campaigns'
 import Title from './Title'
 import SignificanceAlert from './SignificanceAlert'
 import InfoPopover from './InfoPopover'
-import EnlargementError from './EnlargementError'
+import ErrorMessage from './ErrorMessage'
 
 const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
   if (!fields || !tables || !tables.DEFAULT) {
@@ -38,7 +38,7 @@ const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
   return (
     <div css={widgetStyles}>
       {bodyWidth < 1110 && (
-        <EnlargementError message="Please resize to show all data" />
+        <ErrorMessage message="Please resize to show all data" />
       )}
 
       <SignificanceAlert
