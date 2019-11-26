@@ -96,7 +96,12 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    const { hasError, dataFrame } = this.state
+    const { hasError, dataFrame, fields } = this.state
+    const errorMessage =
+      fields && fields.metricID && fields.metricID.length < 2
+        ? 'Please add an additional metric'
+        : 'There has been an error. Please refresh or try again later.'
+
     const styles = css`
       * {
         font-family: Helvetica, Arial, sans-serif;
@@ -107,7 +112,7 @@ class AppComponent extends React.Component {
         <Global styles={styles} />
         <DataProvider value={dataFrame}>
           {hasError ? (
-            <ErrorMessage message="Please include one dimension and two metrics" />
+            <ErrorMessage message={errorMessage} />
           ) : (
             <MainComponent {...this.state} />
           )}

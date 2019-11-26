@@ -8,8 +8,6 @@ import InfoPopover from './InfoPopover'
 import ErrorMessage from './ErrorMessage'
 
 const MainComponent = ({ style, fields, pValue, tables, bodyWidth }) => {
-  console.log('fields', fields)
-  console.log('tables', tables)
   if (!fields || !tables || !tables.DEFAULT) {
     return <div>Loading...</div>
   }
