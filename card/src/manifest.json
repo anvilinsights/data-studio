@@ -7,6 +7,7 @@
   "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
   "packageUrl": "https://datastudio.google.com/u/1/reporting/1ygQd8FwYnDrvmjfkh5ogXNt7mj5JsgBH/page/1O54",
   "privacyPolicyUrl": "https://github.com/anvilinsights/data-studio/blob/master/privacy-terms.md",
+  "termsOfServiceUrl": "https://github.com/anvilinsights/data-studio/blob/master/privacy-terms.md",
   "devMode": "DEVMODE_BOOL",
   "components": [
     {
