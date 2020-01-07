@@ -28,7 +28,7 @@ const Campaigns = ({
 }) => {
   const { value: dataFrame } = React.useContext(DataContext)
   const pastTense = pastTenseLabel.value || pastTenseLabel.defaultValue
-  const color = fontColor.value.color || fontColor.defaultValue
+  const color = fontColor.value.color || fontColor.defaultValue.color
   const performanceLabel = overrideMetric || defaultMetric
   const impressions = impressionsLabel.value || defaultImpressionsLabel
 

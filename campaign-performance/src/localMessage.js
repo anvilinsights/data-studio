@@ -77,7 +77,7 @@ export const message = {
     },
     tableFontColor: {
       value: { color: '#FBFAFC', opacity: 1 },
-      defaultValue: '#fff',
+      defaultValue: { color: '#fff' },
     },
   },
   theme: {

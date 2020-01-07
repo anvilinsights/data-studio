@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const Title = ({ override, defaultValue, fontColor, subtitle }) => {
   const text = override || defaultValue
-  const color = fontColor.value.color || fontColor.defaultValue
+  const color = fontColor.value.color || fontColor.defaultValue.color
 
   const titleStyle = css`
     color: ${color};
