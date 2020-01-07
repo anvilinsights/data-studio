@@ -26,8 +26,8 @@ const extractColor = (
     return obj.value.color;
   }
 
-  if (typeof obj.defaultValue === 'string') {
-    return obj.defaultValue;
+  if (isColorObject(obj.defaultValue)) {
+    return obj.defaultValue.color;
   }
 
   return null;
