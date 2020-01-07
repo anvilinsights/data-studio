@@ -3,8 +3,13 @@ import * as dscc from '@google/dscc';
 export type ObjectFormat = dscc.ObjectFormat;
 export type DSObjectRow = dscc.ObjectRow;
 
+export interface ColorObject {
+  color: string;
+  opacity: number;
+}
+
 export interface StyleItem {
-  defaultValue?: string;
+  defaultValue?: string | ColorObject;
   value?: string;
 }
 
@@ -19,11 +24,6 @@ export type Alignment = 'left' | 'center';
 export interface StyleObject<T = string, K = T> {
   defaultValue: T;
   value?: K;
-}
-
-export interface ColorObject {
-  color: string;
-  opacity: number;
 }
 
 export interface DSData {

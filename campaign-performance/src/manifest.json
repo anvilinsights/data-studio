@@ -1,7 +1,7 @@
 {
   "name": "Stats Analyzer",
   "organization": "Anvil Analytics + Insights",
-  "description": "Utility for comparing a set of results to their expected values",
+  "description": "Utility for comparing a set of results to their expected values.",
   "logoUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/campaign-performance/src/StatsAnalyzer_Icon.png",
   "organizationUrl": "https://anvilinsights.com",
   "supportUrl": "https://github.com/anvilinsights/data-studio/issues",
@@ -13,7 +13,7 @@
     {
       "name": "Stats Analyzer",
       "id": "statsAnalyzer",
-      "description": "Utility for comparing a set of results to their expected values",
+      "description": "Utility for comparing a set of results to their expected values.",
       "iconUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/campaign-performance/src/StatsAnalyzer_Icon.png",
       "resource": {
         "js": "YOUR_GCS_BUCKET/index.js",

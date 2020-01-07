@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@google/dscc": "^0.3.8",
-    "@google/dscc-scripts": "^1.0.6",
+    "@google/dscc-scripts": "^1.0.14",
     "awesome-typescript-loader": "^5.2.1",
     "csstype": "^2.6.6",
     "source-map-loader": "^0.2.4",

@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.5.0",
     "@babel/preset-react": "^7.0.0",
     "@google/dscc": "^0.3.8",
-    "@google/dscc-scripts": "^1.0.7",
+    "@google/dscc-scripts": "^1.0.14",
     "babel-loader": "^8.0.6",
     "jest": "^24.8.0"
   },

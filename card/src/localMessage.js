@@ -26,13 +26,19 @@ export const message = {
       value: 'percentage'
     },
     negativeColor: {
-      defaultValue: 'rgb(230, 74, 25)'
+      defaultValue: {
+        color: 'rgb(230, 74, 25)'
+      }
     },
     positiveColor: {
-      defaultValue: 'rgb(0, 131, 143)'
+      defaultValue: {
+        color: 'rgb(0, 131, 143)'
+      }
     },
     fontColor: {
-      defaultValue: '#6b6b6b'
+      defaultValue: {
+        color: '#6b6b6b'
+      }
     },
     alignment: {
       defaultValue: 'center',
