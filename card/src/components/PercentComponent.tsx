@@ -18,11 +18,11 @@ const formatNumber = (target: number, actual: number): [string, string] => {
   if (actual > target) {
     sign = '+';
     value = -1;
+    value = Math.round((actual / target + value) * 100);
   } else {
     sign = '-';
+    value = Math.round(100 - (actual / target + value) * 100);
   }
-
-  value = Math.round((actual / target + value) * 100);
 
   const formatted = `${value}%`;
 
