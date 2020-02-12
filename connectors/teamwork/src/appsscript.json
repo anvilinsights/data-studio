@@ -4,13 +4,13 @@
   },
   "dataStudio": {
     "name": "Teamwork",
-    "logoUrl": "logoUrl",
+    "logoUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/connectors/teamwork/assets/anvil-logo.jpg",
     "company": "Anvil Analytics & Insights",
     "companyUrl": "https://anvilinsights.com/",
     "addonUrl": "https://github.com/anvilinsights/data-studio",
     "supportUrl": "https://github.com/anvilinsights/data-studio",
     "description": "Data connector for the Teamwork API",
-    "sources": [""]
+    "sources": ["TEAMWORK"]
   },
   "runtimeVersion": "V8"
 }
