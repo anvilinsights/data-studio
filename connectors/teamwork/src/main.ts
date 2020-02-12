@@ -103,7 +103,7 @@ const getFields = (
   const conn = Connector.getInstance(request.configParams);
 
   // just fetch 1 so we can get an idea what the schema will be
-  const data = conn.tryFetchData({
+  const { data } = conn.tryFetchData({
     query: { pageSize: 1 },
     muteHttpExceptions: true
   });
@@ -138,7 +138,7 @@ const getData: GetData<Config> = request => {
     query['fromdate'] = request.dateRange.startDate;
   }
 
-  const responseData = conn.tryFetchData({ query });
+  const responseData = conn.fetchAllRequests({ query });
 
   // Google seems to not like fields that contain a - in the key so we strip that out,
   // but still need to be able to translate the cleaned key (we call id) to the actual
@@ -151,9 +151,9 @@ const getData: GetData<Config> = request => {
       return m;
     }, {});
 
-  const requestedFields = getFields(request).forIds(
-    request.fields.map(field => field.name)
-  );
+  const requestedFields = conn
+    .makeSchema(responseData[0])
+    .forIds(request.fields.map(field => field.name));
 
   // responseData should be an array - get the data from that and pull the requested fields + format
   const rows = responseData.map(row => {
