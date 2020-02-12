@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "libraries": []
+  },
+  "dataStudio": {
+    "name": "Teamwork",
+    "logoUrl": "logoUrl",
+    "company": "Anvil Analytics & Insights",
+    "companyUrl": "https://anvilinsights.com/",
+    "addonUrl": "https://github.com/anvilinsights/data-studio",
+    "supportUrl": "https://github.com/anvilinsights/data-studio",
+    "description": "Data connector for the Teamwork API",
+    "sources": [""]
+  },
+  "runtimeVersion": "V8"
+}
