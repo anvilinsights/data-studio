@@ -48,7 +48,7 @@ export interface GetDataRow {
 export type GetDataRows = Array<GetDataRow>;
 
 export interface GetDataResponse {
-  schema: Object[];
+  schema: any[];
   rows: GetDataRows;
 }
 

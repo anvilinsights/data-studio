@@ -282,4 +282,8 @@ export class Connector {
 
     return { data, headers };
   }
+
+  getCc() {
+    return this.cc;
+  }
 }

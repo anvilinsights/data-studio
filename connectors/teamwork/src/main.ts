@@ -4,11 +4,8 @@ import {
   GetDataRequest,
   Fields,
   GetSchema,
-  GetData,
-  GetConfigRequest
+  GetData
 } from './types';
-
-const cc = DataStudioApp.createCommunityConnector();
 
 // https://developers.google.com/datastudio/connector/reference#isadminuser
 const isAdminUser = () => {
@@ -22,6 +19,9 @@ interface Config {
 
 // https://developers.google.com/datastudio/connector/reference#getconfig
 const getConfig = (request: { configParams?: Config }) => {
+  const conn = Connector.getInstance(request as any);
+  const cc = conn.getCc();
+
   const config = cc.getConfig();
 
   config
@@ -101,6 +101,7 @@ const getFields = (
   request: GetSchemaRequest<Config> | GetDataRequest<Config>
 ): Fields => {
   const conn = Connector.getInstance(request.configParams);
+  const cc = conn.getCc();
 
   // just fetch 1 so we can get an idea what the schema will be
   const { data } = conn.tryFetchData({

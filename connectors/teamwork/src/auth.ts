@@ -5,9 +5,9 @@ import {
   ResetAuth
 } from './types';
 
-const AUTH_PROPERTY_PATH = 'dscc.key';
+import { Connector } from './connector';
 
-const cc = DataStudioApp.createCommunityConnector();
+const AUTH_PROPERTY_PATH = 'dscc.key';
 
 const validateCredentials = (key: string): boolean => {
   let res: any = undefined;
@@ -35,6 +35,8 @@ const validateCredentials = (key: string): boolean => {
 
 // https://developers.google.com/datastudio/connector/auth#getauthtype
 const getAuthType: GetAuthType = () => {
+  const conn = Connector.getInstance({} as any);
+  const cc = conn.getCc();
   return cc
     .newAuthTypeResponse()
     .setAuthType(cc.AuthType.KEY)
@@ -45,11 +47,13 @@ const getAuthType: GetAuthType = () => {
 const isAuthValid = (): boolean => {
   const userProperties = PropertiesService.getUserProperties();
   const key = userProperties.getProperty(AUTH_PROPERTY_PATH);
+  Logger.log(key);
   return validateCredentials(key);
 };
 
 // https://developers.google.com/datastudio/connector/auth#setcredentials
 const setCredentials: SetCredentials = (request: KeyCredentials) => {
+  Logger.log(request);
   const key = request.key;
 
   const validKey = validateCredentials(key);

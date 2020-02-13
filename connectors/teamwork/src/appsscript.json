@@ -10,7 +10,7 @@
     "addonUrl": "https://github.com/anvilinsights/data-studio",
     "supportUrl": "https://github.com/anvilinsights/data-studio",
     "description": "Data connector for the Teamwork API",
-    "sources": ["TEAMWORK"]
+    "authType": ["KEY"]
   },
   "runtimeVersion": "V8"
 }
