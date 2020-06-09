@@ -15,7 +15,8 @@ export interface Config {
 }
 
 export enum Resources {
-  TIME_ENTRIES = 'time_entries.json'
+  TIME_ENTRIES = 'time_entries.json',
+  PROJECTS = 'projects.json'
 }
 
 export interface Response {
@@ -82,8 +83,6 @@ export class Connector {
   fetchRequest(reqOptions: URLFetchRequestOptions = {}) {
     const { url, options } = this.makeRequest(reqOptions);
 
-    Logger.log(`[requesting] ${url}`);
-
     return UrlFetchApp.fetch(url, options);
   }
 
@@ -125,7 +124,7 @@ export class Connector {
       this.cc
         .newDebugError()
         .setText(
-          '[fetchAllRequests] the first request did not have container the x-pages header.'
+          '[fetchAllRequests] the first request did not contain the x-pages header.'
         )
         .throwException();
     }

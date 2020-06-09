@@ -9,7 +9,15 @@ import {
 
 // https://developers.google.com/datastudio/connector/reference#isadminuser
 const isAdminUser = () => {
-  return true;
+  const userEmail = Session.getEffectiveUser().getEmail();
+  const matches = userEmail.match(/@(.+)$/gm);
+
+  if (Array.isArray(matches) && matches.length > 0) {
+    const domain = matches[0];
+    return domain.toLowerCase() === '@anvilinsights.com';
+  }
+
+  return false;
 };
 
 interface Config {
@@ -46,6 +54,12 @@ const getConfig = (request: { configParams?: Config }) => {
         .newOptionBuilder()
         .setLabel('Time Entries')
         .setValue('time_entries.json')
+    )
+    .addOption(
+      config
+        .newOptionBuilder()
+        .setLabel('Projects')
+        .setValue('projects.json')
     );
 
   const siteResource =
@@ -92,8 +106,6 @@ const getConfig = (request: { configParams?: Config }) => {
     config.setDateRangeRequired(true);
   }
 
-  config.printJson();
-
   return config.build();
 };
 
@@ -127,9 +139,6 @@ const getSchema: GetSchema<Config> = (request: GetSchemaRequest<Config>) => {
 
 // https://developers.google.com/datastudio/connector/reference#getdata
 const getData: GetData<Config> = request => {
-  Logger.log('getData');
-  Logger.log(request.fields);
-
   const conn = Connector.getInstance(request.configParams);
 
   const query: any = {};

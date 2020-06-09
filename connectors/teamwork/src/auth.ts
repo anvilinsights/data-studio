@@ -47,13 +47,12 @@ const getAuthType: GetAuthType = () => {
 const isAuthValid = (): boolean => {
   const userProperties = PropertiesService.getUserProperties();
   const key = userProperties.getProperty(AUTH_PROPERTY_PATH);
-  Logger.log(key);
+
   return validateCredentials(key);
 };
 
 // https://developers.google.com/datastudio/connector/auth#setcredentials
 const setCredentials: SetCredentials = (request: KeyCredentials) => {
-  Logger.log(request);
   const key = request.key;
 
   const validKey = validateCredentials(key);
@@ -62,8 +61,10 @@ const setCredentials: SetCredentials = (request: KeyCredentials) => {
       errorCode: 'INVALID_CREDENTIALS'
     };
   }
+
   const userProperties = PropertiesService.getUserProperties();
   userProperties.setProperty(AUTH_PROPERTY_PATH, key);
+
   return {
     errorCode: 'NONE'
   };
