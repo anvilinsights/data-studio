@@ -1,6 +1,13 @@
 {
   "dependencies": {
-    "libraries": []
+    "libraries": [
+      {
+        "userSymbol": "OAuth2",
+        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF",
+        "version": "38",
+        "developmentMode": true
+      }
+    ]
   },
   "dataStudio": {
     "name": "Teamwork",
@@ -10,9 +17,13 @@
     "addOnUrl": "https://github.com/anvilinsights/data-studio",
     "supportUrl": "https://github.com/anvilinsights/data-studio",
     "description": "Data connector for the Teamwork API",
-    "authType": ["KEY"],
+    "authType": ["OAUTH2"],
     "feeType": ["FREE"],
     "sources": ["TEAMWORK_PROJECTS"]
   },
+  "urlFetchWhitelist": [
+    "https://www.teamwork.com/launchpad/login",
+    "https://www.teamwork.com/launchpad/v1/token.json"
+  ],
   "runtimeVersion": "V8"
 }

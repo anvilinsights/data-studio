@@ -1,4 +1,5 @@
 import { Fields, Field, FieldType } from './types';
+import AuthService from './auth_service';
 
 type GoogleURLFetchRequestOptions = GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
 
@@ -35,7 +36,7 @@ export interface InternalField {
 
 export class Connector {
   private static instance: Connector;
-  private readonly apiKey: string;
+  // private readonly apiKey: string;
   private readonly cc: GoogleAppsScript.Data_Studio.CommunityConnector;
 
   static getInstance(config: Config): Connector {
@@ -46,8 +47,8 @@ export class Connector {
   }
 
   constructor(private readonly config: Config) {
-    const properties = PropertiesService.getUserProperties();
-    this.apiKey = properties.getProperty(AUTH_PROPERTY_PATH);
+    // const properties = PropertiesService.getUserProperties();
+    // this.apiKey = properties.getProperty(AUTH_PROPERTY_PATH);
     this.cc = DataStudioApp.createCommunityConnector();
     if (!this.config.site_resource) {
       this.config.site_resource = Resources.TIME_ENTRIES;
@@ -67,11 +68,13 @@ export class Connector {
 
     queryString = queryString ? `?${queryString}` : '';
 
+    const accessToken = AuthService.getInstance().getAccessToken();
+
     const reqParams = params && {
       ...params,
       headers: {
         ...(params.headers || {}),
-        Authorization: `Basic ${Utilities.base64Encode(`${this.apiKey}:x`)}`
+        Authorization: `Bearer ${accessToken}`
       }
     };
 
@@ -149,9 +152,10 @@ export class Connector {
       if (response.getResponseCode() !== 200) {
         console.error({ body: response.getContentText() });
         this.cc
-          .newDebugError()
-          .setText(
-            '[fetchAllReuests] A request in fetchAll call returned a non 200 response!'
+          .newUserError()
+          .setText('Teamwork API returned an error while fetching all the data')
+          .setDebugText(
+            `[fetchAllReuests] A request in fetchAll call returned a non 200 response! Expected = 200 :: Actual = ${response.getResponseCode()}`
           )
           .throwException();
       }

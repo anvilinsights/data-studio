@@ -106,6 +106,8 @@ const getConfig = (request: { configParams?: Config }) => {
     config.setDateRangeRequired(true);
   }
 
+  console.log({ config: config.printJson() });
+
   return config.build();
 };
 
