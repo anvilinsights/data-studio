@@ -26,11 +26,17 @@ interface Config {
 }
 
 // https://developers.google.com/datastudio/connector/reference#getconfig
-const getConfig = (request: { configParams?: Config }) => {
+const getConfig = (request: { configParams?: Config; site_resource?: any }) => {
   const conn = Connector.getInstance(request as any);
   const cc = conn.getCc();
+  const isFirstRequest = request.configParams === undefined;
 
   const config = cc.getConfig();
+
+  if (isFirstRequest) {
+    // TODO should update upstream type defs
+    (config as any).setIsSteppedConfig(true);
+  }
 
   config
     .newInfo()
@@ -65,44 +71,9 @@ const getConfig = (request: { configParams?: Config }) => {
   const siteResource =
     request && request.configParams && request.configParams.site_resource;
 
-  if (!siteResource) {
-    (config as any).setIsSteppedConfig(true);
-  } else if (siteResource == 'time_entries.json') {
-    // config
-    //   .newInfo()
-    //   .setText(
-    //     'The following fields are optional and can be used to filter requested from the Teamwork API'
-    //   );
+  console.log({ request, isFirstRequest });
 
-    // config
-    //   .newTextInput()
-    //   .setId('userId')
-    //   .setName('User Id')
-    //   .setAllowOverride(true);
-
-    // config
-    //   .newTextInput()
-    //   .setId('projectId')
-    //   .setName('Project Id')
-    //   .setAllowOverride(true);
-
-    // config
-    //   .newSelectSingle()
-    //   .setId('showDeleted')
-    //   .setName('Show Deleted')
-    //   .addOption(
-    //     config
-    //       .newOptionBuilder()
-    //       .setLabel('True')
-    //       .setValue('true')
-    //   )
-    //   .addOption(
-    //     config
-    //       .newOptionBuilder()
-    //       .setLabel('False')
-    //       .setValue('False')
-    //   )
-    //   .setAllowOverride(true);
+  if (request.site_resource == 'time_entries.json') {
     config.setDateRangeRequired(true);
   }
 
@@ -135,7 +106,9 @@ const getFields = (
 
 // https://developers.google.com/datastudio/connector/reference#getschema
 const getSchema: GetSchema<Config> = (request: GetSchemaRequest<Config>) => {
+  console.log({ message: 'get schema invoked', request });
   const fields = getFields(request);
+  console.log({ message: 'fields', fields });
   return { schema: fields.build() };
 };
 

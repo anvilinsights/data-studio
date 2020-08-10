@@ -173,6 +173,10 @@ export class Connector {
   }
 
   getFields(data: any): Array<InternalField> {
+    if (!data) {
+      return [];
+    }
+
     const types = this.cc.FieldType;
 
     return Object.entries(data)
@@ -224,6 +228,11 @@ export class Connector {
   }
 
   makeSchema(data: any): Fields {
+    console.log({
+      message: 'make schema called',
+      data,
+      fields: this.getFields(data)
+    });
     const fields = this.cc.getFields();
 
     this.getFields(data).forEach(f => {
