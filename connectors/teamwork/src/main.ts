@@ -165,9 +165,11 @@ const getData: GetData<Config> = request => {
     .makeSchema(responseData[0])
     .forIds(request.fields.map(field => field.name));
 
+  const fieldArray = requestedFields.asArray();
+
   // responseData should be an array - get the data from that and pull the requested fields + format
   const rows = responseData.map(row => {
-    const values = requestedFields.asArray().map(f => {
+    const values = fieldArray.map(f => {
       return row[fieldMap[f.getId()].key];
     });
     return { values };
