@@ -125,7 +125,7 @@ const getData: GetData<Config> = request => {
 
   const responseData = conn.fetchAllRequests({ query });
 
-  // Google seems to not like fields that contain a - in the key so we strip that out,
+  // Google seems to not like fields that contain a dash (-) in the key so we strip that out,
   // but still need to be able to translate the cleaned key (we call id) to the actual
   // key returned by the api. We can do this by mapping the
   // Google Field Id to the API response key.
