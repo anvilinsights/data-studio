@@ -68,16 +68,9 @@ const getConfig = (request: { configParams?: Config; site_resource?: any }) => {
         .setValue('projects.json')
     );
 
-  const siteResource =
-    request && request.configParams && request.configParams.site_resource;
-
-  console.log({ request, isFirstRequest });
-
   if (request.site_resource == 'time_entries.json') {
     config.setDateRangeRequired(true);
   }
-
-  console.log({ config: config.printJson() });
 
   return config.build();
 };
@@ -106,9 +99,7 @@ const getFields = (
 
 // https://developers.google.com/datastudio/connector/reference#getschema
 const getSchema: GetSchema<Config> = (request: GetSchemaRequest<Config>) => {
-  console.log({ message: 'get schema invoked', request });
   const fields = getFields(request);
-  console.log({ message: 'fields', fields });
   return { schema: fields.build() };
 };
 

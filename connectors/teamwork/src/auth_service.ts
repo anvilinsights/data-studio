@@ -21,9 +21,6 @@ export default class AuthService {
       .setClientSecret(clientSecret)
       .setPropertyStore(PropertiesService.getUserProperties())
       .setCallbackFunction('authCallback');
-
-    // const redirectUrl = this.getRedirectUrl();
-    // this.service.setParam('redirect_uri', redirectUrl);
   }
 
   static getInstance(): AuthService {

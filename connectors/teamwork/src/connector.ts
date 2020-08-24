@@ -26,8 +26,9 @@ export interface Response {
 }
 
 export interface InternalField {
-  // id is the id/key of the field for google while key is the id/key of the field in the inquicker response
+  // the id/key of the field for google
   id: string;
+  // the id/key of the field from the inquicker response
   key: string;
   name: string;
   fieldType: FieldType;
@@ -36,7 +37,6 @@ export interface InternalField {
 
 export class Connector {
   private static instance: Connector;
-  // private readonly apiKey: string;
   private readonly cc: GoogleAppsScript.Data_Studio.CommunityConnector;
 
   static getInstance(config: Config): Connector {
@@ -47,8 +47,6 @@ export class Connector {
   }
 
   constructor(private readonly config: Config) {
-    // const properties = PropertiesService.getUserProperties();
-    // this.apiKey = properties.getProperty(AUTH_PROPERTY_PATH);
     this.cc = DataStudioApp.createCommunityConnector();
     if (!this.config.site_resource) {
       this.config.site_resource = Resources.TIME_ENTRIES;
@@ -228,11 +226,6 @@ export class Connector {
   }
 
   makeSchema(data: any): Fields {
-    console.log({
-      message: 'make schema called',
-      data,
-      fields: this.getFields(data)
-    });
     const fields = this.cc.getFields();
 
     this.getFields(data).forEach(f => {
