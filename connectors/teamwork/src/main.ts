@@ -26,11 +26,17 @@ interface Config {
 }
 
 // https://developers.google.com/datastudio/connector/reference#getconfig
-const getConfig = (request: { configParams?: Config }) => {
+const getConfig = (request: { configParams?: Config; site_resource?: any }) => {
   const conn = Connector.getInstance(request as any);
   const cc = conn.getCc();
+  const isFirstRequest = request.configParams === undefined;
 
   const config = cc.getConfig();
+
+  if (isFirstRequest) {
+    // TODO should update upstream type defs
+    (config as any).setIsSteppedConfig(true);
+  }
 
   config
     .newInfo()
@@ -62,47 +68,7 @@ const getConfig = (request: { configParams?: Config }) => {
         .setValue('projects.json')
     );
 
-  const siteResource =
-    request && request.configParams && request.configParams.site_resource;
-
-  if (!siteResource) {
-    (config as any).setIsSteppedConfig(true);
-  } else if (siteResource == 'time_entries.json') {
-    // config
-    //   .newInfo()
-    //   .setText(
-    //     'The following fields are optional and can be used to filter requested from the Teamwork API'
-    //   );
-
-    // config
-    //   .newTextInput()
-    //   .setId('userId')
-    //   .setName('User Id')
-    //   .setAllowOverride(true);
-
-    // config
-    //   .newTextInput()
-    //   .setId('projectId')
-    //   .setName('Project Id')
-    //   .setAllowOverride(true);
-
-    // config
-    //   .newSelectSingle()
-    //   .setId('showDeleted')
-    //   .setName('Show Deleted')
-    //   .addOption(
-    //     config
-    //       .newOptionBuilder()
-    //       .setLabel('True')
-    //       .setValue('true')
-    //   )
-    //   .addOption(
-    //     config
-    //       .newOptionBuilder()
-    //       .setLabel('False')
-    //       .setValue('False')
-    //   )
-    //   .setAllowOverride(true);
+  if (request.site_resource == 'time_entries.json') {
     config.setDateRangeRequired(true);
   }
 
@@ -150,7 +116,7 @@ const getData: GetData<Config> = request => {
 
   const responseData = conn.fetchAllRequests({ query });
 
-  // Google seems to not like fields that contain a - in the key so we strip that out,
+  // Google seems to not like fields that contain a dash (-) in the key so we strip that out,
   // but still need to be able to translate the cleaned key (we call id) to the actual
   // key returned by the api. We can do this by mapping the
   // Google Field Id to the API response key.

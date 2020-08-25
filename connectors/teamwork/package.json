@@ -1,7 +1,7 @@
 {
   "dsccConnector": {
-    "production": "AKfycby01vfqbKr95krd8tkL76Nx1q1xJaj69_PGrO-s-mq8lh6Ch-Slg7CYMDN5NplZMG8-",
-    "latest": "AKfycbwNT5yVkJjt6JjRjsO9b8OemK7lDlMOPy0JmaBjBIM"
+    "production": "AKfycbwTM9-edx96ttCAcsHcNmj0v5fgZhxEfMkPUnW3i_xmijFMa0E4AWJPRrgcai6vjLfS",
+    "latest": "AKfycbzwHq8Nlp8RC0D40nV1D2jndkGfF_sg_mi2WIDzJM0"
   },
   "scripts": {
     "push": "dscc-scripts connector push_changes",

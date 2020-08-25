@@ -1,13 +1,13 @@
-import {
-  GetAuthType,
-  SetCredentials,
-  KeyCredentials,
-  ResetAuth
-} from './types';
-
+import AuthService from './auth_service';
 import { Connector } from './connector';
+import { GetAuthType, ResetAuth } from './types';
 
 const AUTH_PROPERTY_PATH = 'dscc.key';
+
+const getService = (): AuthService => {
+  const service = AuthService.getInstance();
+  return service;
+};
 
 const validateCredentials = (key: string): boolean => {
   let res: any = undefined;
@@ -39,39 +39,35 @@ const getAuthType: GetAuthType = () => {
   const cc = conn.getCc();
   return cc
     .newAuthTypeResponse()
-    .setAuthType(cc.AuthType.KEY)
+    .setAuthType(cc.AuthType.OAUTH2)
     .build();
 };
 
 // https://developers.google.com/datastudio/connector/auth#isauthvalid
 const isAuthValid = (): boolean => {
-  const userProperties = PropertiesService.getUserProperties();
-  const key = userProperties.getProperty(AUTH_PROPERTY_PATH);
-
-  return validateCredentials(key);
+  return getService().hasAccess();
 };
 
-// https://developers.google.com/datastudio/connector/auth#setcredentials
-const setCredentials: SetCredentials = (request: KeyCredentials) => {
-  const key = request.key;
-
-  const validKey = validateCredentials(key);
-  if (!validKey) {
-    return {
-      errorCode: 'INVALID_CREDENTIALS'
-    };
-  }
-
-  const userProperties = PropertiesService.getUserProperties();
-  userProperties.setProperty(AUTH_PROPERTY_PATH, key);
-
-  return {
-    errorCode: 'NONE'
-  };
+const getOAuthService = (): AuthService => {
+  return getService();
 };
 
 // https://developers.google.com/datastudio/connector/auth#resetauth
 const resetAuth: ResetAuth = () => {
   const userProperties = PropertiesService.getUserProperties();
   userProperties.deleteProperty(AUTH_PROPERTY_PATH);
+};
+
+const getRedirectUrl = (): string => {
+  const authInfo = ScriptApp.getAuthorizationInfo(ScriptApp.AuthMode.FULL);
+  const url = authInfo.getAuthorizationUrl();
+  return url;
+};
+
+const get3PAuthorizationUrls = (): string => {
+  return getService().getAuthorizationUrl();
+};
+
+const authCallback = (request: any) => {
+  return getService().handleAuthCallback(request);
 };

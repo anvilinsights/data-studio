@@ -1,18 +1,32 @@
 {
   "dependencies": {
-    "libraries": []
+    "libraries": [
+      {
+        "userSymbol": "OAuth2",
+        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF",
+        "version": "38",
+        "developmentMode": true
+      }
+    ]
   },
   "dataStudio": {
     "name": "Teamwork",
     "logoUrl": "https://raw.githubusercontent.com/anvilinsights/data-studio/master/connectors/teamwork/assets/anvil-logo.jpg",
     "company": "Anvil Analytics & Insights",
     "companyUrl": "https://anvilinsights.com/",
-    "addOnUrl": "https://github.com/anvilinsights/data-studio",
+    "addOnUrl": "https://www.anvilinsights.com/blog/connect-teamwork-data-to-your-data-studio-reports",
+    "termsOfServiceUrl": "https://www.anvilinsights.com/blog/connect-teamwork-data-to-your-data-studio-reports",
+    "privacyPolicyUrl": "https://www.anvilinsights.com/privacy",
     "supportUrl": "https://github.com/anvilinsights/data-studio",
-    "description": "Data connector for the Teamwork API",
-    "authType": ["KEY"],
+    "shortDescription": "Connect your Teamwork data with Google Data Studio",
+    "description": "Connect your Teamwork data with Google Data Studio",
+    "authType": ["OAUTH2"],
     "feeType": ["FREE"],
     "sources": ["TEAMWORK_PROJECTS"]
   },
+  "urlFetchWhitelist": [
+    "https://www.teamwork.com/launchpad/login",
+    "https://www.teamwork.com/launchpad/v1/token.json"
+  ],
   "runtimeVersion": "V8"
 }

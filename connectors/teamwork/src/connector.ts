@@ -1,4 +1,5 @@
 import { Fields, Field, FieldType } from './types';
+import AuthService from './auth_service';
 
 type GoogleURLFetchRequestOptions = GoogleAppsScript.URL_Fetch.URLFetchRequestOptions;
 
@@ -25,8 +26,9 @@ export interface Response {
 }
 
 export interface InternalField {
-  // id is the id/key of the field for google while key is the id/key of the field in the inquicker response
+  // the id/key of the field for google
   id: string;
+  // the id/key of the field from the inquicker response
   key: string;
   name: string;
   fieldType: FieldType;
@@ -35,7 +37,6 @@ export interface InternalField {
 
 export class Connector {
   private static instance: Connector;
-  private readonly apiKey: string;
   private readonly cc: GoogleAppsScript.Data_Studio.CommunityConnector;
 
   static getInstance(config: Config): Connector {
@@ -46,8 +47,6 @@ export class Connector {
   }
 
   constructor(private readonly config: Config) {
-    const properties = PropertiesService.getUserProperties();
-    this.apiKey = properties.getProperty(AUTH_PROPERTY_PATH);
     this.cc = DataStudioApp.createCommunityConnector();
     if (!this.config.site_resource) {
       this.config.site_resource = Resources.TIME_ENTRIES;
@@ -67,11 +66,13 @@ export class Connector {
 
     queryString = queryString ? `?${queryString}` : '';
 
+    const accessToken = AuthService.getInstance().getAccessToken();
+
     const reqParams = params && {
       ...params,
       headers: {
         ...(params.headers || {}),
-        Authorization: `Basic ${Utilities.base64Encode(`${this.apiKey}:x`)}`
+        Authorization: `Bearer ${accessToken}`
       }
     };
 
@@ -149,9 +150,10 @@ export class Connector {
       if (response.getResponseCode() !== 200) {
         console.error({ body: response.getContentText() });
         this.cc
-          .newDebugError()
-          .setText(
-            '[fetchAllReuests] A request in fetchAll call returned a non 200 response!'
+          .newUserError()
+          .setText('Teamwork API returned an error while fetching all the data')
+          .setDebugText(
+            `[fetchAllReuests] A request in fetchAll call returned a non 200 response! Expected = 200 :: Actual = ${response.getResponseCode()}`
           )
           .throwException();
       }
@@ -169,6 +171,10 @@ export class Connector {
   }
 
   getFields(data: any): Array<InternalField> {
+    if (!data) {
+      return [];
+    }
+
     const types = this.cc.FieldType;
 
     return Object.entries(data)
@@ -240,9 +246,9 @@ export class Connector {
     return fields;
   }
 
-  // this is similar to makeRequest but works under the assumption that it's a teamwork
-  // request, with data in the response that should be extracted, if not it will throw exceptions
-  // that are expected to be exposed to the client
+  // this is similar to makeRequest but works under the assumption that it's a
+  // teamwork request, with data in the response that should be extracted, if
+  // not it will throw exceptions that are expected to be exposed to the client
   tryFetchData(options: URLFetchRequestOptions = {}): Response {
     const res = this.fetchRequest(options);
 
@@ -259,9 +265,11 @@ export class Connector {
     }
 
     const body = Utilities.jsonParse(res.getContentText());
-    // The response should only have 2 items STATUS and the one with the data. The teamwork API does not
-    // use a static 'data' variable with the response so we have to try and figure out the name of the key
-    // associated with the data.
+
+    // The response should only have 2 items STATUS and the one with the data.
+    // The teamwork API does not use a static 'data' variable with the response
+    // so we have to try and figure out the name of the key associated with the
+    // data.
     const key = Object.keys(body).filter(s => s !== 'STATUS')[0];
 
     if (key === undefined) {

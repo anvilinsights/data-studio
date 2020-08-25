@@ -106,3 +106,8 @@ export type SetCredentials = (
   request: SetCredentialsRequest
 ) => SetCredentialsResponse;
 export type GetAuthType = () => GetAuthTypeResponse;
+
+export interface OAuthCreds {
+  clientId: string;
+  clientSecret: string;
+}
