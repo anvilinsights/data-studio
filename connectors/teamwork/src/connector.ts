@@ -246,9 +246,9 @@ export class Connector {
     return fields;
   }
 
-  // this is similar to makeRequest but works under the assumption that it's a teamwork
-  // request, with data in the response that should be extracted, if not it will throw exceptions
-  // that are expected to be exposed to the client
+  // this is similar to makeRequest but works under the assumption that it's a
+  // teamwork request, with data in the response that should be extracted, if
+  // not it will throw exceptions that are expected to be exposed to the client
   tryFetchData(options: URLFetchRequestOptions = {}): Response {
     const res = this.fetchRequest(options);
 
@@ -265,9 +265,11 @@ export class Connector {
     }
 
     const body = Utilities.jsonParse(res.getContentText());
-    // The response should only have 2 items STATUS and the one with the data. The teamwork API does not
-    // use a static 'data' variable with the response so we have to try and figure out the name of the key
-    // associated with the data.
+
+    // The response should only have 2 items STATUS and the one with the data.
+    // The teamwork API does not use a static 'data' variable with the response
+    // so we have to try and figure out the name of the key associated with the
+    // data.
     const key = Object.keys(body).filter(s => s !== 'STATUS')[0];
 
     if (key === undefined) {

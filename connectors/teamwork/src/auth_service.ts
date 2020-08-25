@@ -53,7 +53,9 @@ export default class AuthService {
       return HtmlService.createHtmlOutput('Authorization failed.');
     }
 
-    return HtmlService.createHtmlOutput('Successfully authorized');
+    return HtmlService.createHtmlOutput(
+      'Successfully authorized. Close this window to continue setting up the connector.'
+    );
   }
 
   hasAccess(): boolean {
