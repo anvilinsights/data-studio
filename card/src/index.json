@@ -28,51 +28,99 @@
   "style": [
     {
       "id": "config",
-      "label": "Config",
+      "label": "Chart Options",
       "elements": [
         {
           "id": "title",
-          "label": "Title",
+          "label": "Chart Title",
           "type": "TEXTINPUT"
         },
         {
           "id": "measure",
-          "label": "Field Name Override for Subtitle",
+          "label": "Field Name",
           "type": "TEXTINPUT"
         },
         {
-          "id": "isCurrency",
-          "label": "Use Currency Symbol (Value format only)",
-          "type": "CHECKBOX",
-          "defaultValue": false
-        },
-        {
-          "id": "currencySymbol",
-          "label": "Currency Symbol",
-          "type": "TEXTINPUT",
-          "defaultValue": "$"
-        },
-        {
-          "id": "isPlural",
-          "label": "Field Name is Plural",
-          "type": "CHECKBOX",
-          "defaultValue": true
-        },
-        {
           "id": "format",
-          "label": "Data Format",
+          "label": "Chart Type (% or fraction)",
           "defaultValue": "percentage",
           "type": "SELECT_SINGLE",
           "options": [
             {
               "value": "percentage",
-              "label": "Percentage"
+              "label": "Percentage (%)"
             },
             {
               "value": "values",
-              "label": "Values"
+              "label": "Fraction (n/m)"
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "value_display_config",
+      "label": "Number Formatting",
+      "elements": [
+        {
+          "id": "locale",
+          "label": "Locale",
+          "type": "TEXTINPUT",
+          "defaultValue": "en-US"
+        },
+        {
+          "id": "valueType",
+          "label": "Value Type",
+          "type": "SELECT_SINGLE",
+          "defaultValue": "decimal",
+          "options": [
+            {
+              "value": "decimal",
+              "label": "Decimal"
+            },
+            {
+              "value": "currency",
+              "label": "Currency"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            }
+          ]
+        },
+        {
+          "id": "currency",
+          "label": "Currency Code (ex USD)",
+          "type": "TEXTINPUT",
+          "defaultValue": "USD"
+        },
+        {
+          "id": "maximumFractionDigits",
+          "label": "Maximum Fraction Digits",
+          "type": "INTERVAL"
+        },
+        {
+          "id": "minimumFractionDigits",
+          "label": "Minimum Fraction Digits",
+          "type": "INTERVAL"
+        }
+      ]
+    },
+    {
+      "id": "style_config",
+      "label": "Font, Color & Alignment",
+      "elements": [
+        {
+          "id": "fontFamily",
+          "label": "Font Family",
+          "type": "FONT_FAMILY",
+          "defaultValue": "Roboto"
+        },
+        {
+          "id": "isPlural",
+          "label": "Field Name Pluralized",
+          "type": "CHECKBOX",
+          "defaultValue": true
         },
         {
           "id": "negativeColor",
@@ -85,12 +133,6 @@
           "label": "Above Target Color",
           "type": "FONT_COLOR",
           "defaultValue": "#00838F"
-        },
-        {
-          "id": "debug",
-          "label": "Debug Mode",
-          "type": "CHECKBOX",
-          "defaultValue": false
         },
         {
           "id": "alignment",
@@ -107,6 +149,36 @@
               "label": "Center"
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "debug",
+      "label": "Debug",
+      "elements": [
+        {
+          "id": "debug",
+          "label": "Debug Mode",
+          "type": "CHECKBOX",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "deprecated",
+      "label": "Deprecated Options",
+      "elements": [
+        {
+          "id": "isCurrency",
+          "label": "Is Currency (Controlled by setting the Value Type to currency)",
+          "type": "CHECKBOX",
+          "defaultValue": false
+        },
+        {
+          "id": "currencySymbol",
+          "label": "Currency Symbol (Controlled by the Currency Code)",
+          "type": "TEXTINPUT",
+          "defaultValue": "$"
         }
       ]
     }

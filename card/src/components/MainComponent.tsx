@@ -2,22 +2,29 @@ import * as React from 'react';
 import { DSData } from './../types';
 import { CardComponent } from './CardComponent';
 import { Container } from './Styled';
+import { useErrorContext } from './ErrorComponent';
 
-// tslint:disable-next-line:no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props extends DSData {}
 
-const MainComponent: React.SFC<Props> = props => {
-  if (!props.tables || !props.style || !props.fields) {
+enum ERR_TYPE {
+  NO_DATA = 'no_data',
+}
+
+const MainComponent: React.FC<Props> = ({ tables, style, fields, theme }) => {
+  const ctx = useErrorContext();
+
+  if (!tables || !style || !fields) {
     // tslint:disable-next-line:no-console
     console.error('tables/style/fields are null/undefined/false');
     return null;
   }
 
-  const { tables, style, fields, theme } = props;
   const { actual: metricField } = fields;
 
   // ensure tables.DEFAULT is an array
   if (!Array.isArray(tables.DEFAULT)) {
+    console.log(tables);
     // tslint:disable-next-line:no-console
     console.error('tables.DEFAULT is not an array');
     return null;

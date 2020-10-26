@@ -18,10 +18,22 @@
     "deploy:prod": "yarn build:prod && yarn push:prod"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
     "@google/dscc": "^0.3.8",
     "@google/dscc-scripts": "^1.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.1.0",
     "csstype": "^2.6.6",
+    "eslint": "^7.11.0",
+    "eslint-plugin-react": "^7.21.5",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
@@ -36,6 +48,7 @@
     "emotion": "^10.0.9",
     "emotion-theming": "^10.0.19",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-icons": "^3.11.0"
   }
 }

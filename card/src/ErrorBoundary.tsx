@@ -5,7 +5,10 @@ interface State {
   errorInfo?: React.ErrorInfo;
 }
 
-export class ErrorBoundary extends React.Component<{}, State> {
+export class ErrorBoundary extends React.Component<
+  Record<never, never>,
+  State
+> {
   public readonly state: State = {};
 
   public constructor(props: any) {
@@ -24,7 +27,7 @@ export class ErrorBoundary extends React.Component<{}, State> {
     console.log(errorInfo);
     this.setState({
       error,
-      errorInfo
+      errorInfo,
     });
   }
 

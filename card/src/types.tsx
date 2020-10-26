@@ -5,7 +5,7 @@ export type DSObjectRow = dscc.ObjectRow;
 
 export interface ColorObject {
   color: string;
-  opacity: number;
+  opacity?: number;
 }
 
 export interface StyleItem {
@@ -24,21 +24,6 @@ export type Alignment = 'left' | 'center';
 export interface StyleObject<T = string, K = T> {
   defaultValue: T;
   value?: K;
-}
-
-export interface DSData {
-  tables: {
-    DEFAULT: Array<{
-      target: number[];
-      actual: number[];
-    }>;
-  };
-  style: StyleData;
-  fields: {
-    target: Array<FieldData>;
-    actual: Array<FieldData>;
-  };
-  theme: object;
 }
 
 export interface FieldData {
@@ -60,6 +45,27 @@ export interface StyleData {
   isCurrency: StyleObject<boolean>;
   currencySymbol: StyleObject;
   isPlural: StyleObject<boolean>;
+  maximumFractionDigits: StyleObject<number>;
+  minimumFractionDigits: StyleObject<number>;
+  valueType: StyleObject<string>;
+  locale: StyleObject<string>;
+  currency: StyleObject<string>;
+  fontFamily: StyleObject<string>;
+}
+
+export interface DSData {
+  tables: {
+    DEFAULT: Array<{
+      target: number[];
+      actual: number[];
+    }>;
+  };
+  style: StyleData;
+  fields: {
+    target: Array<FieldData>;
+    actual: Array<FieldData>;
+  };
+  theme: Record<any, any>;
 }
 
 export interface Colors {

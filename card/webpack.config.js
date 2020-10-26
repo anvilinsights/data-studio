@@ -2,10 +2,10 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const CSS_FILE = process.env.npm_package_dsccViz_cssFile;
-const MANIFEST = "manifest.json";
-const INDEX_JSON = "index.json";
+const MANIFEST = 'manifest.json';
+const INDEX_JSON = 'index.json';
 
-const IS_DEV = process.env.NODE_ENV !== "production"
+const IS_DEV = process.env.NODE_ENV !== 'production';
 
 module.exports = [
   {
@@ -16,19 +16,37 @@ module.exports = [
     },
     resolve: {
       // Add '.ts' and '.tsx' as resolvable extensions.
-      extensions: [".ts", ".tsx", ".js", ".json"]
+      extensions: ['.ts', '.tsx', '.js', '.json'],
     },
     module: {
       rules: [
         // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-        { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-typescript',
+                '@babel/preset-react',
+                '@emotion/babel-preset-css-prop',
+              ],
+              plugins: [
+                '@babel/proposal-class-properties',
+                '@babel/proposal-object-rest-spread',
+              ],
+            },
+          },
+        },
 
         // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-        { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
-      ]
+        { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+      ],
     },
     output: {
-      filename: "index.js",
+      filename: 'index.js',
       path: path.resolve(__dirname, 'build'),
     },
     plugins: [
@@ -37,6 +55,6 @@ module.exports = [
         { from: path.join('src', MANIFEST), to: '.' },
         { from: path.join('src', INDEX_JSON), to: '.' },
       ]),
-    ]
+    ],
   },
 ];

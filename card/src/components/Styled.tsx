@@ -15,7 +15,7 @@ export const Container = styled.div({
   width: 'auto',
   padding: 20,
   flexBasis: '100%',
-  display: 'flex'
+  display: 'flex',
 });
 
 export const Card = styled.div<CardColors>(
@@ -27,22 +27,22 @@ export const Card = styled.div<CardColors>(
     alignContent: 'center',
     textAlign: 'center',
     flexBasis: '100%',
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as any,
   ({ colors }: CardColors) => ({
-    color: colors.primary
+    color: colors.primary,
   }),
   ({ theme }) => {
     const center = {
       alignContent: 'center',
       textAlign: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     };
 
     const left = {
       alignContent: 'flex-start',
       textAlign: 'left',
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     };
 
     return (theme.alignment === 'center' ? center : left) as any;
@@ -59,15 +59,15 @@ export const Percentage = styled.div<TextColor>(
     display: 'flex',
     justifyContent: 'center',
     whiteSpace: 'nowrap',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   ({ textColor }: TextColor) => ({ color: textColor }),
   ({ theme }) => {
     const left = {
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     };
     const center = {
-      justifyContent: 'center'
+      justifyContent: 'center',
     };
 
     return theme.alignment === 'center' ? center : left;
@@ -77,14 +77,14 @@ export const Percentage = styled.div<TextColor>(
 export const PercentageText = styled.div({
   // fontSize: '96px',
   fontSize: '15vw',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
 });
 
 export const PercentageSubtitle = styled.div<PercentageSubtitleProps>(
   {
     fontSize: '4vw',
     fontStyle: 'italic',
-    fontWeight: 300
+    fontWeight: 300,
   },
   ({ fontFamily }) => ({ fontFamily })
 );
@@ -103,23 +103,23 @@ export const StyledText = styled.span<StyledTextProps>(
   ({ color, weight, fontFamily }) => ({
     color,
     fontWeight: weight,
-    fontFamily
+    fontFamily,
   })
 );
 
-export const Title = styled.div<{}>(
+export const Title = styled.div<Record<any, any>>(
   {
     fontSize: '4vw',
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   ({ theme }) => {
     const left = {
-      textAlign: 'left'
+      textAlign: 'left',
     };
 
     const center = {
-      textAlign: 'center'
+      textAlign: 'center',
     };
 
     return (theme.alignment === 'center' ? center : left) as any;
@@ -130,7 +130,7 @@ export const ErrorComponent = styled.div({
   fontSize: 16,
   background: '#ff9c9c',
   borderRadius: 1,
-  padding: 5
+  padding: 5,
 });
 
 export const Fraction = styled.div<TextColor>(
@@ -139,7 +139,7 @@ export const Fraction = styled.div<TextColor>(
     display: 'flex',
     marginBottom: 10,
     minHeight: '50vh',
-    position: 'relative'
+    position: 'relative',
   },
   ({ textColor, fontFamily }) => ({ color: textColor, fontFamily })
 );
@@ -147,17 +147,17 @@ export const Fraction = styled.div<TextColor>(
 export const FractionPart = styled.div({
   textAlign: 'left',
   display: 'flex',
-  minWidth: 150
+  minWidth: 150,
 });
 
 export const Numerator = styled.div({
   marginRight: 15,
-  alignSelf: 'flex-start'
+  alignSelf: 'flex-start',
 });
 
 export const Divisor = styled.div({
   alignSelf: 'flex-end',
-  marginLeft: 15
+  marginLeft: 15,
 });
 
 export interface OptionalColor {
@@ -166,14 +166,14 @@ export interface OptionalColor {
 
 export const FractionNumber = styled.div<OptionalColor>(
   {
-    fontSize: '2rem'
+    fontSize: '2rem',
   },
   ({ color }) => ({ color })
 );
 
 export const FractionLabel = styled.div<StyledTextProps>(
   {
-    fontWeight: 300
+    fontWeight: 300,
   },
   ({ fontFamily }) => ({ fontFamily })
 );
@@ -186,7 +186,7 @@ export const FractionBar = styled.div({
   alignItems: 'center',
   transform: 'rotate(-20deg)',
   zIndex: -1,
-  opacity: 0.8
+  opacity: 0.8,
 });
 
 export interface HorizLineProps {
@@ -197,7 +197,7 @@ export const HorizLine = styled.div<HorizLineProps>(
   {
     background: 'black',
     height: '4px',
-    width: '100%'
+    width: '100%',
   },
   ({ color }) => ({ background: color })
 );

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Colors } from '../types';
+import { Colors, StyleData } from '../types';
 import {
   Percentage,
   PercentageSubtitle,
   PercentageText,
-  StyledText
+  StyledText,
 } from './Styled';
+import { useNumberFormatter } from '../hooks/useNumberFormatter';
 
 const formatNumber = (target: number, actual: number): [string, string] => {
   let sign = '';
@@ -35,7 +36,7 @@ interface Props {
   actual: number;
   measure: string | null;
   isPlural: boolean;
-  fontFamily: string;
+  style: StyleData;
 }
 
 export const PercentComponent: React.SFC<Props> = ({
@@ -44,9 +45,22 @@ export const PercentComponent: React.SFC<Props> = ({
   actual,
   measure,
   isPlural,
-  fontFamily
+  style,
 }) => {
-  const [sign, percent] = formatNumber(target, actual);
+  const formatter = useNumberFormatter(style, 'never');
+
+  const [sign, value] = React.useMemo(() => {
+    if (typeof actual !== 'number' || typeof target !== 'number') {
+      return [null, null];
+    }
+
+    if (actual > target) {
+      return ['+', actual / target - 1];
+    }
+    return ['-', (1 - actual / target) * -1];
+  }, [target, actual]);
+
+  const percent = formatter ? formatter.format(value) : null;
 
   let color = colors.positive;
   let signText = 'above';
@@ -62,9 +76,9 @@ export const PercentComponent: React.SFC<Props> = ({
 
   if (measure) {
     text = (
-      <PercentageSubtitle fontFamily={fontFamily}>
+      <PercentageSubtitle>
         ({measure} {pluralText} {percent}{' '}
-        <StyledText color={color} weight={500} fontFamily={fontFamily}>
+        <StyledText color={color} weight={500}>
           {signText}
         </StyledText>{' '}
         target)
@@ -76,7 +90,8 @@ export const PercentComponent: React.SFC<Props> = ({
     <>
       <Percentage textColor={color}>
         <PercentageText>
-          {sign} {percent}
+          {sign}
+          {percent}
         </PercentageText>
       </Percentage>
       {text}

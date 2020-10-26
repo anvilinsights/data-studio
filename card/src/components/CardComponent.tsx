@@ -60,9 +60,8 @@ interface Props {
   theme: any;
 }
 
-export const CardComponent: React.SFC<Props> = props => {
+export const CardComponent: React.SFC<Props> = (props) => {
   const fontColor = props.theme.themeFontColor.color;
-  const fontFamily = props.theme.themeFontFamily;
 
   const negativeColor = extractColor(props.style, 'negativeColor');
   const positiveColor = extractColor(props.style, 'positiveColor');
@@ -80,23 +79,23 @@ export const CardComponent: React.SFC<Props> = props => {
   const colors: Colors = {
     primary: fontColor,
     negative: negativeColor,
-    positive: positiveColor
+    positive: positiveColor,
   };
 
   const theme: Theme = {
     colors,
-    alignment
+    alignment,
   };
 
   let figure = (
     <RatioComponent
+      style={props.style}
       colors={colors}
       target={props.target}
       actual={props.actual}
       measure={measureLabel}
       isCurrency={isCurrency}
       currencySymbol={currencySymbol}
-      fontFamily={fontFamily}
     />
   );
 
@@ -108,13 +107,13 @@ export const CardComponent: React.SFC<Props> = props => {
         actual={props.actual}
         measure={measureLabel}
         isPlural={isPlural}
-        fontFamily={fontFamily}
+        style={props.style}
       />
     );
   }
 
   const baseColors = {
-    primary: colors.primary
+    primary: colors.primary,
   };
 
   return (
@@ -122,7 +121,7 @@ export const CardComponent: React.SFC<Props> = props => {
       <Card colors={baseColors}>
         {title ? (
           <Title>
-            <StyledText fontFamily={fontFamily}>{title}</StyledText>
+            <StyledText>{title}</StyledText>
           </Title>
         ) : null}
         {figure}

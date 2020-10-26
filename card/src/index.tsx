@@ -6,6 +6,7 @@ import * as ReactDOM from 'react-dom';
 import MainComponent from './components/MainComponent';
 import { ErrorBoundary } from './ErrorBoundary';
 import { DSData } from './types';
+import { ErrorProvider } from './components/ErrorComponent';
 
 const LOCAL = process.env.NODE_ENV !== 'production';
 
@@ -28,10 +29,10 @@ interface State extends Partial<DSData> {
   count: number;
 }
 
-class AppComponent extends React.Component<{}, State> {
+class AppComponent extends React.Component<Record<never, never>, State> {
   public readonly state: Readonly<State> = { count: 0 };
   protected unsubscribe?: () => any;
-  protected debug: boolean = false;
+  protected debug = false;
 
   constructor(props: any) {
     super(props);
@@ -42,9 +43,9 @@ class AppComponent extends React.Component<{}, State> {
     this.handleDataUpdate({
       style: {
         debug: {
-          value: true
-        }
-      }
+          value: true,
+        },
+      },
     } as any);
 
     if (LOCAL) {
@@ -55,6 +56,7 @@ class AppComponent extends React.Component<{}, State> {
       );
       // While doing local development just use mock data. To get this when first starting you can do
       // console.log in the `handleDataUpdate` when deployed to DataStudio.
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
       const local = require('./localMessage.js');
       this.handleDataUpdate(local.message);
     } else {
@@ -66,12 +68,12 @@ class AppComponent extends React.Component<{}, State> {
       }
 
       this.unsubscribe = dscc.subscribeToData(
-        data => {
+        (data) => {
           console.log('%cgot data from dscc', 'color: green');
           this.handleDataUpdate(data as any);
         },
         {
-          transform: dscc.objectTransform
+          transform: dscc.objectTransform,
         }
       );
     }
@@ -104,6 +106,18 @@ class AppComponent extends React.Component<{}, State> {
       this.debug = true;
     }
 
+    // legacy transforms
+    if (data.style?.isCurrency?.value) {
+      data.style.valueType.value = 'currency';
+    }
+
+    const chartType =
+      data.style?.format?.value ?? data.style?.format?.defaultValue;
+
+    if (chartType === 'percentage') {
+      data.style.valueType.value = 'percent';
+    }
+
     this.setState({ ...data, count: this.state.count });
   }
 
@@ -112,11 +126,13 @@ class AppComponent extends React.Component<{}, State> {
   }
 
   public render() {
-    const styles = css`
-      @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500i,700&display=swap');
+    const fontFamily =
+      this.state.style?.fontFamily?.value ||
+      this.state.style?.fontFamily?.defaultValue;
 
+    const styles = css`
       * {
-        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        font-family: ${fontFamily}, Helvetica, Arial, sans-serif;
       }
 
       html,
@@ -127,6 +143,7 @@ class AppComponent extends React.Component<{}, State> {
       #app {
         display: flex;
         height: 100%;
+        position: relative;
       }
     `;
 
@@ -149,7 +166,7 @@ class AppComponent extends React.Component<{}, State> {
     return (
       <React.Fragment>
         <Global styles={styles} />
-        {component}
+        <ErrorProvider>{component}</ErrorProvider>
       </React.Fragment>
     );
   }
