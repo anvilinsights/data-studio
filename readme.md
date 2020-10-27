@@ -9,7 +9,7 @@
 | Ad Review Table | `/ad-review-table` | Yes |
 
 ### Data Target Card
-[View sample report](https://datastudio.google.com/u/1/reporting/1ygQd8FwYnDrvmjfkh5ogXNt7mj5JsgBH/page/1O54) with more information
+[View sample report](https://datastudio.google.com/s/v7oyS66kvrM) with more information
 
 ### Stats Analyzer
 [View sample report](https://datastudio.google.com/u/0/reporting/1rvkuCS60hY1iZb9gYX6f3BIjXFlbMX6k/page/zr52) with more information
