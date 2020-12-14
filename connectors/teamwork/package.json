@@ -1,7 +1,8 @@
 {
   "dsccConnector": {
     "production": "AKfycbwTM9-edx96ttCAcsHcNmj0v5fgZhxEfMkPUnW3i_xmijFMa0E4AWJPRrgcai6vjLfS",
-    "latest": "AKfycbzwHq8Nlp8RC0D40nV1D2jndkGfF_sg_mi2WIDzJM0"
+    "latest": "AKfycbzwHq8Nlp8RC0D40nV1D2jndkGfF_sg_mi2WIDzJM0",
+    "dev": "AKfycbxiruT9l__m9EHBEiwqm4WNdZ9RdhcQcb6EKnGnGHhI1_V0cjbFcQfO6QKMiXDLUzwD"
   },
   "scripts": {
     "push": "dscc-scripts connector push_changes",
@@ -12,7 +13,8 @@
     "try_latest": "dscc-scripts connector try_latest",
     "update_production": "dscc-scripts connector update_production",
     "dscc": "dscc-scripts connector",
-    "clasp": "clasp"
+    "clasp": "clasp",
+    "deploy_dev": "node build.js deploy_dev"
   },
   "devDependencies": {
     "@google/clasp": "^2.2.1",
