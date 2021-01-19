@@ -17,7 +17,8 @@ export interface Config {
 
 export enum Resources {
   TIME_ENTRIES = 'time_entries.json',
-  PROJECTS = 'projects.json'
+  PROJECTS = 'projects.json',
+  TASKS = 'tasks.json'
 }
 
 export interface Response {
@@ -89,7 +90,7 @@ export class Connector {
 
   fetchAllRequests(reqOptions: URLFetchRequestOptions = {}) {
     // will override the passed query params if they contain page or page size
-    const pageSize = 500;
+    const pageSize = 250;
 
     const data = [];
     const query = reqOptions.query || {};

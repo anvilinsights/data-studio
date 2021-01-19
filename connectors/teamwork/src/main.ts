@@ -66,6 +66,12 @@ const getConfig = (request: { configParams?: Config; site_resource?: any }) => {
         .newOptionBuilder()
         .setLabel('Projects')
         .setValue('projects.json')
+    )
+    .addOption(
+      config
+        .newOptionBuilder()
+        .setLabel('Tasks')
+        .setValue('tasks.json')
     );
 
   if (request.site_resource == 'time_entries.json') {

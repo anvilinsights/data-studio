@@ -11,8 +11,12 @@ const deployDev = async () => {
     );
   }
 
-  const buffer = exec(`npx @google/clasp`);
+  const buffer = exec(
+    `npx @google/clasp deploy --deploymentId ${dev_deployment_id} --description Development`
+  );
   const out = buffer.toString('utf8');
+
+  console.log(out);
 };
 
 const main = async () => {
